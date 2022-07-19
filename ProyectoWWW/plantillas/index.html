@@ -1,0 +1,673 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static '/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{%static '/css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'index' %}">
+                <div class="sidebar-brand-icon">
+                    <img class="icon-general" src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfNSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNjQgNjQiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNjQgNjQiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PGc+PGc+PHBhdGggZD0ibTM2IDU0djhoLTZ2LTEwLjExYzEuMyAxLjMxIDMuMTEgMi4xMSA1LjA4IDIuMTF6IiBmaWxsPSIjZmNkNzcwIi8+PC9nPjxnPjxwYXRoIGQ9Im0zMiA0OGgtNGMuMjUgMS41Mi45NyAyLjg2IDIgMy44OXYxMC4xMWgtN3YtNGgxYy41NSAwIDEuMDUtLjIyIDEuNDEtLjU5LjM3LS4zNi41OS0uODYuNTktMS40MSAwLTEuMS0uOS0yLTItMmgtMXYtMTItMTFjNC44MyAxLjEyIDguNzcgNC4yNSAxMSA4LjR2OC42eiIgZmlsbD0iI2ZjZDc3MCIvPjwvZz48Zz48cGF0aCBkPSJtMTUgNTh2NGgtN3YtNC44My0uMDFjMS4yMi41NCAyLjU4Ljg0IDQgLjg0eiIgZmlsbD0iI2ZjZDc3MCIvPjwvZz48Zz48cGF0aCBkPSJtMTcgNTR2NGgtMi0zYy0xLjQyIDAtMi43OC0uMy00LS44NC0zLjUzLTEuNTQtNi01LjA2LTYtOS4xNnYtLjY2YzAtNy44MSA1LjM5LTE0LjU4IDEzLTE2LjM0djExIDExLjU1eiIgZmlsbD0iI2ZjZDc3MCIvPjwvZz48Zz48cGF0aCBkPSJtMTcgNThoNnY0aC04di00eiIgZmlsbD0iI2U2ZTllZCIvPjwvZz48Zz48cGF0aCBkPSJtMjMgNDJ2MTJjMC0xLjEtLjktMi0yLTJoLTEuMTdjLS41MyAwLTEuMDQuMjEtMS40Mi41OWwtMS40MSAxLjQxLTItLjQ1di0xMS41NWw0LTV6IiBmaWxsPSIjZTZlOWVkIi8+PC9nPjxnPjxwYXRoIGQ9Im0yMyAzMXYxMWwtNC01eiIgZmlsbD0iI2NjZDFkOSIvPjwvZz48Zz48cGF0aCBkPSJtMTUgMzEgNCA2LTQgNXoiIGZpbGw9IiNjY2QxZDkiLz48L2c+PGc+PHBhdGggZD0ibTU4IDQ4aDRjLS4yOSAxLjczLTEuMTggMy4yMy0yLjQ0IDQuMy0xLjI2IDEuMDYtMi44OCAxLjctNC42NCAxLjdoLTUuOTJjMC0uNTUtLjIyLTEuMDUtLjU5LTEuNDEtLjM2LS4zNy0uODYtLjU5LTEuNDEtLjU5aC00Yy0xLjEgMC0yIC45LTIgMmgtNS0uOTJjLTEuOTcgMC0zLjc4LS44LTUuMDgtMi4xMS0xLjAzLTEuMDMtMS43NS0yLjM3LTItMy44OWg0IDIgMTIgMTB6IiBmaWxsPSIjYWFiMmJkIi8+PC9nPjxnPjxwYXRoIGQ9Im01NiAzNnYxMmgtMTB2LTEyaDh6IiBmaWxsPSIjZDNhMDZjIi8+PC9nPjxnPjxwYXRoIGQ9Im01NCAyMHYxNmgtOHYtNGgtOHYtMTJoNCA0IDR6IiBmaWxsPSIjZGZiMjhiIi8+PC9nPjxnPjxwYXRoIGQ9Im0zOCAzMmg4djQgMTJoLTEydi04LjYtNy40eiIgZmlsbD0iI2U2ZTllZCIvPjwvZz48Zz48cGF0aCBkPSJtNDguNDEgNTIuNTljLjM3LjM2LjU5Ljg2LjU5IDEuNDEgMCAxLjEtLjQ1IDIuMS0xLjE3IDIuODMtLjczLjcyLTEuNzMgMS4xNy0yLjgzIDEuMTdzLTIuMS0uNDUtMi44My0xLjE3Yy0uNzItLjczLTEuMTctMS43My0xLjE3LTIuODNzLjktMiAyLTJoNGMuNTUgMCAxLjA1LjIyIDEuNDEuNTl6IiBmaWxsPSIjZjBkMGI0Ii8+PC9nPjxnPjxwYXRoIGQ9Im0yNCA1NGMxLjEgMCAyIC45IDIgMiAwIC41NS0uMjIgMS4wNS0uNTkgMS40MS0uMzYuMzctLjg2LjU5LTEuNDEuNTloLTEtNnYtNGwxLjQxLTEuNDFjLjM4LS4zOC44OS0uNTkgMS40Mi0uNTloMS4xN2MxLjEgMCAyIC45IDIgMnoiIGZpbGw9IiNmMGQwYjQiLz48L2c+PGc+PHBhdGggZD0ibTI5LjEyIDE5Ljg4Yy41NC41NC44OCAxLjI5Ljg4IDIuMTIgMCAxLjY2LTEuMzQgMy0zIDNoLTEuMTNjLjA5LS4zMi4xMy0uNjUuMTMtMXYtNWgxYy44MyAwIDEuNTguMzQgMi4xMi44OHoiIGZpbGw9IiNmMGQwYjQiLz48L2c+PGc+PHBhdGggZD0ibTIyIDI4IDEgMy00IDYtNC02IDEtM3oiIGZpbGw9IiNmMGQwYjQiLz48L2c+PGc+PHBhdGggZD0ibTI2IDE5djVjMCAuMzUtLjA0LjY4LS4xMyAxLS40NCAxLjczLTIuMDEgMy0zLjg3IDNoLTZjLTEuODYgMC0zLjQzLTEuMjctMy44Ny0zLS4wOS0uMzItLjEzLS42NS0uMTMtMXYtNS0zaDE0eiIgZmlsbD0iI2YwZDBiNCIvPjwvZz48Zz48cGF0aCBkPSJtMTIuMTMgMjVoLTEuMTNjLS44MyAwLTEuNTgtLjM0LTIuMTItLjg4cy0uODgtMS4yOS0uODgtMi4xMmMwLTEuNjYgMS4zNC0zIDMtM2gxdjVjMCAuMzUuMDQuNjguMTMgMXoiIGZpbGw9IiNmMGQwYjQiLz48L2c+PGc+PHBhdGggZD0ibTMwIDE2djZjMC0uODMtLjM0LTEuNTgtLjg4LTIuMTJzLTEuMjktLjg4LTIuMTItLjg4aC0xdi0zeiIgZmlsbD0iIzY1NmQ3OCIvPjwvZz48Zz48cGF0aCBkPSJtMTEgMTljLTEuNjYgMC0zIDEuMzQtMyAzdi02aDR2M3oiIGZpbGw9IiM2NTZkNzgiLz48L2c+PGc+PHBhdGggZD0ibTI5Ljk2IDEyaC04Ljk2di05LjgxLS4wMWMyLjA4LjM4IDMuOTUgMS4zNSA1LjQ0IDIuNzIgMS45NiAxLjggMy4yNiA0LjMgMy41MiA3LjF6IiBmaWxsPSIjZmY4MjZlIi8+PC9nPjxnPjxwYXRoIGQ9Im0xNyAyLjE5djkuODFoLTguOTZjLjQ1LTQuOTQgNC4xNi04Ljk0IDguOTYtOS44MnoiIGZpbGw9IiNmZjgyNmUiLz48L2c+PGc+PHBhdGggZD0ibTIxIDIuMTl2OS44MWgtNHYtOS44MS0uMDFjLjY1LS4xMiAxLjMyLS4xOCAyLS4xOHMxLjM1LjA2IDIgLjE4eiIgZmlsbD0iI2ZjNmU1MSIvPjwvZz48Zz48cGF0aCBkPSJtNyAxMmgxLjA0IDguOTYgNCA4Ljk2IDEuMDRjLjU1IDAgMSAuNDUgMSAxdjJjMCAuNTUtLjQ1IDEtMSAxaC0xLTQtMTQtNC0xYy0uNTUgMC0xLS40NS0xLTF2LTJjMC0uNTUuNDUtMSAxLTF6IiBmaWxsPSIjZmM2ZTUxIi8+PC9nPjwvZz48Zz48cGF0aCBkPSJtNTkuNDc3IDQ3IDMuNDUxLTguNjI4LTEuODU3LS43NDMtMy43NDggOS4zNzFoLS4zMjN2LTEyaC0ydi0xNmgtNHYtNGgtMnY0aC0ydi02aC0ydjZoLTJ2LTRoLTJ2NGgtNHYxMmgtNHY1LjEyOWMtMi4zNTctMi44OTQtNS41NzQtNS4wMDItOS4yMjUtNS45NjhsLS40NTQtMS4zNjFjMS40NTgtLjQwMyAyLjY1Ni0xLjQzNCAzLjI1NS0yLjhoLjQyNGMyLjIwNiAwIDQtMS43OTQgNC00di01YzEuMTAzIDAgMi0uODk3IDItMnYtMmMwLTEuMTAzLS44OTctMi0yLTJoLS4xNzRjLS45NTctNS43Ni01Ljg4My0xMC0xMS44MjYtMTBzLTEwLjg2OSA0LjI0LTExLjgyNiAxMGgtLjE3NGMtMS4xMDMgMC0yIC44OTctMiAydjJjMCAxLjEwMy44OTcgMiAyIDJ2NWMwIDIuMjA2IDEuNzk0IDQgNCA0aC40MjRjLjYgMS4zNjYgMS43OTcgMi4zOTggMy4yNTUgMi44bC0uNDU0IDEuMzYxYy03LjgxNSAyLjA2MS0xMy4yMjUgOS4wNDctMTMuMjI1IDE3LjE4MXYuNjU4YzAgNC4yNjQgMi40NDQgNy45NjEgNiA5Ljc4NnY1LjIxNGgzMHYtOGgzLjEwMWMuNDY1IDIuMjc5IDIuNDg0IDQgNC44OTkgNHM0LjQzNC0xLjcyMSA0Ljg5OS00aDUuMDE5YzQuMDE1IDAgNy40MDktMi44NzUgOC4wNjktNi44MzVsLjE5NC0xLjE2NXptLTEyLjQ3NyAwdi0xMGg4djEwem0tOC0yNmgxNHYxNGgtNnYtNGgtOHptNiAxMnYxNGgtMTB2LTE0em0tMTIgNi42NzZ2Ny4zMjRoLS4zMjNsLTMuNzQ5LTkuMzcyLTEuODU3Ljc0MyAzLjQ1MiA4LjYyOWgtMy43MDNsLjE5NCAxLjE2NWMuMjY1IDEuNTkuOTc2IDMuMDAxIDEuOTg2IDQuMTI1djguNzFoLTV2LTJjMS42NTQgMCAzLTEuMzQ2IDMtM3MtMS4zNDYtMy0zLTN2LTIwLjY3M2MzLjgxMyAxLjIxMiA3LjAzOCAzLjgyOCA5IDcuMzQ5em0tMTEuNzIxLTEwLjY3Ni42MTcgMS44NTItMi44OTYgNC4zNDUtMi44OTctNC4zNDUuNjE4LTEuODUyem0uNzIxIDEwLjE0OS0xLjc2Mi0yLjIwMyAxLjc2Mi0yLjY0M3ptLTYgMHYtNC44NDZsMS43NjIgMi42NDN6bTAgMy4yMDEgMy0zLjc1IDMgMy43NXY4LjgyNmMtLjMxNC0uMTExLS42NDktLjE3Ni0xLS4xNzZoLTEuMTcxYy0uODAxIDAtMS41NTUuMzEyLTIuMTIyLjg3OWwtMS4wMjYgMS4wMjYtLjY4MS0uMTUyem0yIDEyLjA2NCAxLjEyMS0xLjEyMWMuMTg5LS4xODkuNDQxLS4yOTMuNzA4LS4yOTNoMS4xNzFjLjU1MSAwIDEgLjQ0OSAxIDF2MWgyYy41NTEgMCAxIC40NDkgMSAxcy0uNDQ5IDEtMSAxaC02em00IDQuNTg2djJoLTZ2LTJ6bTUtMzV2LTRjMS4xMDMgMCAyIC44OTcgMiAycy0uODk3IDItMiAyem0yLTUuNDQ0Yy0uNTkxLS4zNDQtMS4yNjgtLjU1Ni0yLS41NTZ2LTFoMnptLS4yMDQtNy41NTZoLTYuNzk2di03LjU0MmMzLjQzNSAxLjA2NSA2LjA3IDMuOTE0IDYuNzk2IDcuNTQyem0tOC43OTYtNy45NXY3Ljk1aC0ydi03Ljk1Yy4zMjktLjAzMi42NjItLjA1IDEtLjA1cy42NzEuMDE4IDEgLjA1em0tNCAuNDA4djcuNTQyaC02Ljc5NmMuNzI2LTMuNjI4IDMuMzYxLTYuNDc3IDYuNzk2LTcuNTQyem0tOS4wMDEgOS41NDJoLjAwMSAyNHYyaC0yNHptNC4wMDEgNHYxYy0uNzMyIDAtMS40MDkuMjEyLTIgLjU1NnYtMS41NTZ6bS0yIDVjMC0xLjEwMy44OTctMiAyLTJ2NGMtMS4xMDMgMC0yLS44OTctMi0yem00IDJ2LTdoMTJ2N2MwIDEuNjU0LTEuMzQ2IDMtMyAzaC02Yy0xLjY1NCAwLTMtMS4zNDYtMy0zem0tMTAgMjR2LS42NThjMC02Ljk2IDQuNDY0LTEyLjk2OCAxMS0xNS4wMjl2MTkuOTk3bC0xLjA4NS0uMjQxYy0yLjMwNS0uNTEzLTMuOTE1LTIuNTItMy45MTUtNC44ODJ2LTQuMTg3aC0ydjQuMTg3YzAgMy4zMDYgMi4yNTQgNi4xMTYgNS40ODEgNi44MzNsMy41MTkuNzgydjIuMTk4aC00Yy00Ljk2MiAwLTktNC4wMzgtOS05em02IDEwLjU3NGMuOTU1LjI3MSAxLjk1OS40MjYgMyAuNDI2aDJ2MmgtNXptMjIgMi40MjZ2LTcuMDg2YzEuMTgzLjY4IDIuNTUgMS4wNjggNCAxLjA4M3Y2LjAwM3ptMTQtNGMtMS42NTQgMC0zLTEuMzQ2LTMtMyAwLS41NTEuNDQ5LTEgMS0xaDRjLjU1MSAwIDEgLjQ0OSAxIDEgMCAxLjY1NC0xLjM0NiAzLTMgM3ptOS45MTctNGgtNS4xMDJjLS40MTQtMS4xNjEtMS41MTQtMi0yLjgxNi0yaC00Yy0xLjMwMiAwLTIuNDAyLjgzOS0yLjgxNiAyaC01LjEwMmMtMi42MjQgMC00Ljg5Ni0xLjYyNS01Ljc4NS00aDMxLjQwNGMtLjg4NyAyLjM3NS0zLjE1OCA0LTUuNzgzIDR6Ii8+PHBhdGggZD0ibTQ1IDIzaDJ2MmgtMnoiLz48cGF0aCBkPSJtNDEgMjNoMnYyaC0yeiIvPjxwYXRoIGQ9Im00OSAyM2gydjJoLTJ6Ii8+PHBhdGggZD0ibTQ5IDI3aDJ2MmgtMnoiLz48cGF0aCBkPSJtNDEgMjdoMnYyaC0yeiIvPjxwYXRoIGQ9Im00NSAyN2gydjJoLTJ6Ii8+PHBhdGggZD0ibTQ5IDMxaDJ2MmgtMnoiLz48cGF0aCBkPSJtMzcgMzVoMnYxMGgtMnoiLz48cGF0aCBkPSJtNDEgMzVoMnYxMGgtMnoiLz48cGF0aCBkPSJtNDkgMzloNHYyaC00eiIvPjxwYXRoIGQ9Im00OSA0M2g0djJoLTR6Ii8+PC9nPjwvZz48L3N2Zz4="
+                    />
+                </div>
+                <div class="sidebar-brand-text mx-2">SoftGOC </div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Administrador
+            </div>
+
+            <!-- Nav Item - Gestion usuarios Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'InterfazAdmin' %}">
+                    <i class="fas fa-fw fa-drafting-compass"></i>
+                    <span>𝐀𝐃𝐌𝐈𝐍𝐈𝐒𝐓𝐑𝐀𝐃𝐎𝐑</span>
+                </a>
+            </li>
+           
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Gerente
+            </div>
+
+            <!-- Nav Item - Solicitud obras Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'InterfazGerente' %}">
+                    <i class="fas fa-fw fa-drafting-compass"></i>
+                    <span>𝐆𝐄𝐑𝐄𝐍𝐓𝐄</span>
+                </a>
+            </li>
+
+                <!-- Heading -->
+            <div class="sidebar-heading">
+                Jefe de Almacén
+            </div>
+
+            <!-- Nav Item - Registrar materiales Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'interfazJefeAlmacen' %}">
+                    <i class="fas fa-fw fa-bars " ></i>
+                    <span>𝐉𝐄𝐅𝐄 𝐃𝐄 𝐀𝐋𝐌𝐀𝐂𝐄𝐍</span>
+                </a>
+            </li>
+
+            
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <div class="sidebar-heading">
+                Jefe de Obras
+            </div>
+
+            <!-- Nav Item - Registrar materiales Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'interfazJefeObra' %}">
+                    <i class="fas fa-fw fa-drafting-compass"></i>
+                    <span>𝐉𝐄𝐅𝐄 𝐃𝐄 𝐎𝐁𝐑𝐀𝐒</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending for your account.
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="{%static '/img/undraw_profile_1.svg' %}" alt="">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="{%static '/img/undraw_profile_2.svg' %}" alt="">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="{%static '/img/undraw_profile_3.svg' %}" alt="">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Prueba Admin</span>
+                                <img class="img-profile rounded-circle" src="{%static '/img/undraw_profile.svg' %}">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Earnings (Monthly)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Earnings (Annual)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Pending Requests</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Direct
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Social
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Referral
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Content Column -->
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Color System -->
+                            <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-primary text-white shadow">
+                                        <div class="card-body">
+                                            Primary
+                                            <div class="text-white-50 small">#4e73df</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-success text-white shadow">
+                                        <div class="card-body">
+                                            Success
+                                            <div class="text-white-50 small">#1cc88a</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-info text-white shadow">
+                                        <div class="card-body">
+                                            Info
+                                            <div class="text-white-50 small">#36b9cc</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-warning text-white shadow">
+                                        <div class="card-body">
+                                            Warning
+                                            <div class="text-white-50 small">#f6c23e</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-danger text-white shadow">
+                                        <div class="card-body">
+                                            Danger
+                                            <div class="text-white-50 small">#e74a3b</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-secondary text-white shadow">
+                                        <div class="card-body">
+                                            Secondary
+                                            <div class="text-white-50 small">#858796</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-light text-black shadow">
+                                        <div class="card-body">
+                                            Light
+                                            <div class="text-black-50 small">#f8f9fc</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-dark text-white shadow">
+                                        <div class="card-body">
+                                            Dark
+                                            <div class="text-white-50 small">#5a5c69</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{%static '/img/undraw_posting_photo.svg' %}" alt="">
+                                    </div>
+                                    <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely
+                                        free and without attribution!</p>
+                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
+                                        unDraw &rarr;</a>
+                                </div>
+                            </div>
+
+                            <!-- Approach -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
+                                    <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="{% url 'login' %}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{%static '/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{%static '/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{%static '/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{%static '/js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{%static '/vendor/chart.js/Chart.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{%static '/js/demo/chart-area-demo.js' %}"></script>
+    <script src="{%static '/js/demo/chart-pie-demo.js' %}"></script>
+
+</body>
+
+</html>
