@@ -20,7 +20,7 @@ def index(request):
     password = request.POST['user_password']
 
 
-    usuario_db = Usuario.objects.filter(correo_usuario = email)
+    usuario_db = Usuario.objects.filter(correo = email)
     # usuario con correo igual
     print(usuario_db)
     print(len(usuario_db))
@@ -30,18 +30,15 @@ def index(request):
     
     datos = usuario_db.get()
 
-    password_db = datos.contrasena_usuario
-    rol_db = datos.rol_usuario
+    password_db = datos.contrasena
+    rol_db = datos.tipo_usuario
 
     if password == password_db:
         if rol_db == "Admin":
             return render(request, "InterfazAdmin.html")
-        # Agrgar otros roles 
-        if rol_db == "Jefe_de_Obra":
-            return render(request, "interfazJefeAlmacen.html")
 
-        if rol_db == "Gerente":
-            return render(request, "interfazGerente.html")
+        if rol_db == "Empleado":
+            return render(request, "InterfazEmpleado.html")
     else:
       #Contraseña incorrecta  
       return render(request, "login.html")  
@@ -186,7 +183,7 @@ def modificarUsuario(request):
     if request.method == "POST" and request.POST['boton'] == "Confirmar Modificación":
         email2 = request.POST['emailUser']
         if len(request.POST['Nombre'])>0 and len(request.POST['PrimerApellido'])>0 and len(request.POST['SegundoApellido'])>0 and len(request.POST['Contraseña'])>0:
-            u = Usuarios.objects.get(correo_usuario=email2)   
+            u = Usuario.objects.get(correo_usuario=email2)   
             u.nombre_usuario = request.POST['Nombre']
             u.paterno_usuario = request.POST['PrimerApellido']
             u.materno_usuario = request.POST['SegundoApellido']
@@ -214,7 +211,7 @@ def eliminarUsuario(request):
     if request.method == "POST" and request.POST['boton'] == "Buscar usuario a eliminar":
         email = request.POST['emailUser']
         if len(email) !=0:            
-            u = Usuarios.objects.filter(correo_usuario=email)   
+            u = Usuario.objects.filter(correo_usuario=email)   
             if len(u) == 1:
                 datos = u.get()
                 nombre = datos.nombre_usuario
@@ -237,7 +234,7 @@ def eliminarUsuario(request):
     if request.method == "POST" and request.POST['boton'] == "Confirmar Eliminación":
         email2 = request.POST['emailUser']
         if len(request.POST['emailUser'])>0 :
-            u = Usuarios.objects.get(correo_usuario=email2)   
+            u = Usuario.objects.get(correo_usuario=email2)   
             u.delete()
             mensaje = "Se eliminó exitosamente"
             boton = "Buscar usuario a eliminar"
@@ -249,8 +246,8 @@ def eliminarUsuario(request):
 def interfazAdmin(request):
     return render(request, "InterfazAdmin.html")
 
-def interfazGerente(request):
-    return render(request, "InterfazGerente.html")
+def interfazEmpleado(request):
+    return render(request, "InterfazEmpleado.html")
 
 def consultarUsuario(request):
     mensaje = ""
@@ -262,7 +259,7 @@ def consultarUsuario(request):
     if request.method == "POST":
         email = request.POST['emailUser']
         if len(email) !=0:            
-            u = Usuarios.objects.filter(correo_usuario=email)   
+            u = Usuario.objects.filter(correo_usuario=email)   
             if len(u) == 1:
                 datos = u.get()
                 nombre = datos.nombre_usuario
