@@ -8,7 +8,7 @@ def main():
     """Run administrative tasks."""
     # Implementación de pip como subproceso, para la instalacion de paquetes en requirements.txt
     os.system('pip install -r requirements.txt')
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ProyectoWWW.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'NASA.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
