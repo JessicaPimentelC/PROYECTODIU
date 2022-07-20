@@ -311,31 +311,36 @@
 
 
                                         <div class=" col-sm-4"></div>
-                                        <input type="text" class="form-control form-control-user" id="Nombre" name="nombre_usuario" placeholder="Nombre" required>&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="PrimerApellido" name="primerApellido_usuario" placeholder="Primer Apellido" required>&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="SegundoApellido" name="segundoApellido_usuario" placeholder="Segundo Apellido">&nbsp;
-
+                                        <input type="text" class="form-control form-control-user" id="Nombre" name="nombre" placeholder="Nombre" required>&nbsp;
+                                        <input type="text" class="form-control form-control-user" id="Cedula" name="cedula" placeholder="Cedula" required>&nbsp;
+                                        <input type="text" class="form-control form-control-user" id="Apellidos" name="apellidos" placeholder="Apellidos">&nbsp;
+                                        <input type="text" class="form-control form-control-user" id="Direccion" name="direccion" placeholder="Direccion">&nbsp;
+                                        <input type="text" class="form-control form-control-user" id="Telefono" name="telefono" placeholder="Telefono">&nbsp;
 
                                         <div class="form-group row">
 
                                             <div class="col-sm-4">
-                                                <select class="form-control-select" name="rolUser" id="exampleRolUser" required>
+                                                <select class="form-control-select" name="tipo_usuario" id="tipo_usuario" required>
                                                         <option value="" selected>-Seleccione Rol-</option>
                                                         <option value="Admin">Admin</option>
-                                                        <option value="Gerente">Gerente</option>
-                                                        <option value="Jefe_de_Obra">Jefe de Obra</option>
-                                                        <option value="Jefe_de_Almacen">Jefe de Almacen</option>
+                                                        <option value="Empleado">Empleado</option>
+                                                       
                                                     </select>
 
                                             </div>
                                             <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email_usuario" placeholder="Correo electrónico" required>
+                                                <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Correo electrónico" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <div class="col-sm-12 mb-3 mb-sm-0">
-                                                <input type="password" class="form-control form-control-user" id="Contraseña" name="contrasena_usuario" placeholder="Contraseña" required>
+                                                <input type="password" class="form-control form-control-user" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-user" id="estado" name="estado" placeholder="Estado" required>
                                             </div>
                                         </div>
                                         <input type="submit" class="btn btn-primary btn-user btn-block" value="Registrar Usuario">

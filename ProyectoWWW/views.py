@@ -9,9 +9,8 @@ from django.shortcuts import render
 
 # Conexión a la base de datos 
 from . import models
-Usuarios = models.Usuarios
-Proveedores = models.Proveedores
-Inventario = models.Inventario
+Usuario = models.Usuario
+
 
 def index(request):
     # Post enviado desde formulario en login
@@ -21,7 +20,7 @@ def index(request):
     password = request.POST['user_password']
 
 
-    usuario_db = Usuarios.objects.filter(correo_usuario = email)
+    usuario_db = Usuario.objects.filter(correo_usuario = email)
     # usuario con correo igual
     print(usuario_db)
     print(len(usuario_db))
@@ -38,8 +37,11 @@ def index(request):
         if rol_db == "Admin":
             return render(request, "InterfazAdmin.html")
         # Agrgar otros roles 
-        if rol_db == "Obra":
+        if rol_db == "Jefe_de_Obra":
             return render(request, "interfazJefeAlmacen.html")
+
+        if rol_db == "Gerente":
+            return render(request, "interfazGerente.html")
     else:
       #Contraseña incorrecta  
       return render(request, "login.html")  
@@ -132,14 +134,18 @@ def listaCliente(request):
 def crearUsuario(request):
     mensaje = ""
     if request.method == "POST":
-        nombre = request.POST['nombre_usuario']
-        primerApellido = request.POST['primerApellido_usuario']
-        segundoApellido = request.POST['segundoApellido_usuario']
-        rolUser = request.POST['rolUser']
-        email = request.POST['email_usuario']
-        contrasena = request.POST['contrasena_usuario']
+        nombre = request.POST['nombre']
+        cedula = request.POST['cedula']
+        apellidos = request.POST['apellidos']
+        direccion = request.POST['direccion']
+        telefono = request.POST['telefono']
+        email = request.POST['correo']
+        tipo_usuario = request.POST['tipo_usuario']
+        contrasena = request.POST['contrasena']
+        estado = request.POST['estado']
+
         if len(nombre) !=0:
-            u = Usuarios(nombre_usuario = nombre, paterno_usuario=primerApellido,materno_usuario=segundoApellido, rol_usuario=rolUser, correo_usuario=email, contrasena_usuario=contrasena)    
+            u = Usuario(nombre = nombre, cedula=cedula,apellidos=apellidos, direccion=direccion, telefono = telefono, correo=email, tipo_usuario=tipo_usuario, contrasena=contrasena, estado= estado)    
             u.save()
             mensaje = "guardado exitosamente"
     return render(request, "CrearUsuario.html", {"mensaje":mensaje})
@@ -155,7 +161,7 @@ def modificarUsuario(request):
     if request.method == "POST" and request.POST['boton'] == "Buscar usuario a modificar":
         email = request.POST['emailUser']
         if len(email) !=0:            
-            u = Usuarios.objects.filter(correo_usuario=email)   
+            u = Usuario.objects.filter(correo_usuario=email)   
             if len(u) == 1:
                 datos = u.get()
                 nombre = datos.nombre_usuario
