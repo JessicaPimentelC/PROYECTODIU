@@ -294,7 +294,7 @@
 
                             <div class="card-header py-3">
 
-                                <h6 class="m-0 font-weight-bold text-primary">Digite el CORREO para consultar:</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Ingrese el correo para consultar:</h6>
                             </div>
                             <form action="{% url 'ConsultarUsuario' %}" method="POST" class="user">
                                 {% csrf_token %}
@@ -308,12 +308,12 @@
                                     <div class="row">
                                         <label for="Nombre" class="col-2 col-form-label">Nombre </label>
                                         <input type="text" class="col form-control form-control-user" id="Nombre" name="nombre_usuario" value="{{nombre}}" readonly>&nbsp;
-                                        <label for="PrimerApellido" class="col-2 col-form-label">Primer Apellido</label>
+                                        <label for="Apellidos" class="col-2 col-form-label">Apellidos</label>
                                         <input type="text" class="col form-control form-control-user" id="PrimerApellido" name="primerApellido_usuario" value="{{apellido1}}" readonly>&nbsp;
-                                    </div>
+                                    </div>&nbsp;
                                     <div class="row">
-                                        <label for="SegundoApellido" class="col-2 col-form-label">Segundo Apellido</label>
-                                        <input type="text" class="col form-control form-control-user" id="SegundoApellido" name="segundoApellido_usuario" value="{{apellido2}}" readonly>&nbsp;
+                                        <label for="Cedula" class="col-2 col-form-label">Cedula</label>
+                                        <input type="text" class="col form-control form-control-user" id="Cedula" name="cedula" value="{{cedula}}" readonly>&nbsp;
                                         <label for="exampleRolUser" class="col-2 col-form-label">Rol</label>
                                         <input type="text" class="col form-control form-control-user" name="rolUser" id="exampleRolUser" value="{{rol}}" readonly>
                                     </div>&nbsp;
@@ -351,7 +351,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Universidad del Valle 2021</span>
+                        <span>Copyright &copy; Universidad del Valle 2022</span>
                     </div>
                 </div>
             </footer>

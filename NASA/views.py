@@ -204,24 +204,24 @@ def eliminarUsuario(request):
     boton = ""
     mensaje = ""
     nombre= ""
+    cedula = ""
     apellido1 =""
-    apellido2 = ""
     rol = ""
     correo = ""
     if request.method == "POST" and request.POST['boton'] == "Buscar usuario a eliminar":
         email = request.POST['emailUser']
         if len(email) !=0:            
-            u = Usuario.objects.filter(correo_usuario=email)   
+            u = Usuario.objects.filter(correo=email)   
             if len(u) == 1:
                 datos = u.get()
-                nombre = datos.nombre_usuario
-                apellido1 = datos.paterno_usuario
-                apellido2 = datos.materno_usuario
-                rol = datos.rol_usuario
-                correo = datos.correo_usuario
-                contrasena= datos.contrasena_usuario
+                nombre = datos.nombre
+                apellido1 = datos.apellidos
+                cedula = datos.cedula
+                rol = datos.tipo_usuario
+                correo = datos.correo
+                contrasena= datos.contrasena
                 boton = "Confirmar Eliminación"
-                return render(request, "EliminarUsuario.html", {"boton":boton, "nombre": nombre, "apellido1": apellido1, "apellido2":apellido2, "rol":rol, "correo": correo, "contrasena": contrasena})
+                return render(request, "EliminarUsuario.html", {"boton":boton, "nombre": nombre,  "apellido":apellido1,"cedula":cedula, "rol":rol, "correo": correo, "contrasena": contrasena})
             if len(u) != 1:
                 mensaje = "No se encontró el usuario"
                 boton = "Buscar usuario a eliminar"
@@ -234,7 +234,7 @@ def eliminarUsuario(request):
     if request.method == "POST" and request.POST['boton'] == "Confirmar Eliminación":
         email2 = request.POST['emailUser']
         if len(request.POST['emailUser'])>0 :
-            u = Usuario.objects.get(correo_usuario=email2)   
+            u = Usuario.objects.get(correo=email2)   
             u.delete()
             mensaje = "Se eliminó exitosamente"
             boton = "Buscar usuario a eliminar"
@@ -253,23 +253,23 @@ def consultarUsuario(request):
     mensaje = ""
     nombre= ""
     apellido1 =""
-    apellido2 = ""
+    cedula = ""
     rol = ""
     correo = ""
     if request.method == "POST":
         email = request.POST['emailUser']
         if len(email) !=0:            
-            u = Usuario.objects.filter(correo_usuario=email)   
+            u = Usuario.objects.filter(correo=email)   
             if len(u) == 1:
                 datos = u.get()
-                nombre = datos.nombre_usuario
-                apellido1 = datos.paterno_usuario
-                apellido2 = datos.materno_usuario
-                rol = datos.rol_usuario
-                correo = datos.correo_usuario
+                nombre = datos.nombre
+                apellido1 = datos.apellidos
+                cedula = datos.cedula
+                rol = datos.tipo_usuario
+                correo = datos.correo
             else:
                 mensaje = "El usuario no existe"
-    return render(request, "ConsultarUsuario.html",{"mensaje":mensaje, "nombre": nombre, "apellido1": apellido1, "apellido2":apellido2, "rol":rol, "correo": correo})
+    return render(request, "ConsultarUsuario.html",{"mensaje":mensaje, "nombre": nombre, "apellido1": apellido1, "cedula":cedula,  "rol":rol, "correo": correo})
 
 def consultarClientes(request):
     return render(request, "ConsultarClientes.html")
