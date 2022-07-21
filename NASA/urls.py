@@ -42,6 +42,7 @@ urlpatterns = [
     path('EliminarCliente.html/', views.eliminarCliente, name='EliminarCliente'),
     path('ListaCliente.html/', views.listaCliente, name='ListaCliente'),
     path('CrearUsuario.html/', views.crearUsuario, name='CrearUsuario'),
+    path('CrearZapatilla.html/', views.crearZapatillaPF, name='crearZapatillaPF'),
     path('registroMateriales.html/', views.registrarMateriales, name='RegistrarMateriales'),
     path('ConsultarUsuario.html/', views.consultarUsuario, name='ConsultarUsuario'),
     path('ModificarUsuario.html/', views.modificarUsuario, name='ModificarUsuario'),

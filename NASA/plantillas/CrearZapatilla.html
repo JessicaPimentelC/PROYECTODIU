@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Crear Usuario</title>
+    <title>Registrar una zapatilla</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gestión Usuarios<sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Punto fisico<sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -312,7 +312,7 @@
                                 <!-- Brand Buttons -->
                                 <div class="card shadow mb-4"> </div>
 
-                                <form action="{% url 'CrearUsuario' %}" method="POST" class="user">
+                                <form action="{% url 'crearZapatillaPF' %}" method="POST" class="zapatilla">
                                     {% csrf_token %}
 
                                     <SCript>
@@ -324,39 +324,53 @@
 
 
                                         <div class=" col-sm-4"></div>
-                                        <input type="text" class="form-control form-control-user" id="Nombre" name="nombre" placeholder="Nombre" required>&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="Cedula" name="cedula" placeholder="Cedula" required>&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="Apellidos" name="apellidos" placeholder="Apellidos">&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="Direccion" name="direccion" placeholder="Direccion">&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="Telefono" name="telefono" placeholder="Telefono">&nbsp;
+                                        <input type="text" class="form-control form-control-rzp" id="Estilo" name="estilo" placeholder="Estilo" required>&nbsp;
+                                        <input type="text" class="form-control form-control-rzp" id="Precio_compra" name="precio_compra" placeholder="Precio compra" required>&nbsp;
+                                        <input type="text" class="form-control form-control-rzp" id="Proveedor" name="proveedor" placeholder="Proveedor" required>&nbsp;
 
                                         <div class="form-group row">
 
                                             <div class="col-sm-4">
-                                                <select class="form-control-select" name="tipo_usuario" id="tipo_usuario" required>
-                                                        <option value="" selected>-Seleccione Rol-</option>
-                                                        <option value="Admin">Admin</option>
-                                                        <option value="Empleado">Empleado</option>
-                                                       
-                                                    </select>
-
+                                                <input type="text" class="form-control form-control-rzp" id="43" name="43" placeholder="43">&nbsp;
                                             </div>
                                             <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Correo electrónico" required>
+                                                <input type="text" class="form-control form-control-rzp" id="42" name="42" placeholder="42">&nbsp;
                                             </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                <input type="password" class="form-control form-control-user" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="41" name="41" placeholder="41">&nbsp;
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-user" id="estado" name="estado" placeholder="Estado" required>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="40" name="40" placeholder="40">&nbsp;
                                             </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="41" name="41" placeholder="41">&nbsp;
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="40" name="40" placeholder="40">&nbsp;
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="39" name="39" placeholder="39">&nbsp;
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="38" name="38" placeholder="38">&nbsp;
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="37" name="37" placeholder="37">&nbsp;
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="36" name="36" placeholder="36">&nbsp;
+                                            </div><div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="35" name="35" placeholder="35">&nbsp;
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="34" name="34" placeholder="34">&nbsp;
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="33" name="33" placeholder="33">&nbsp;
+                                            </div>
+                                            
                                         </div>
-                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Registrar Usuario">
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Registrar zapatilla">
 
                                     </div>
                                 </form>

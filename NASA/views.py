@@ -10,6 +10,7 @@ from django.shortcuts import render
 # Conexión a la base de datos 
 from . import models
 Usuario = models.Usuario
+Zapatilla_a_almacen = models.Zapatillas_a_almacen
 
 
 def index(request):
@@ -277,6 +278,29 @@ def consultarClientes(request):
 def  avancesDeObras(request):
     return render(request, "AvancesDeObras.html")
 
+def crearZapatillaPF(request):
+    mensaje = ""
+    if request.method == "POST":
+        estilo = request.POST['estilo']
+        precio_compra = request.POST['precio_compra']
+        proveedor = request.POST['proveedor']
+        t43 = request.POST['43']
+        t42 = request.POST['42']
+        t41 = request.POST['41']
+        t40 = request.POST['40']
+        t39 = request.POST['39']
+        t38 = request.POST['38']
+        t37 = request.POST['37']
+        t36 = request.POST['36']
+        t35 = request.POST['35']
+        t34 = request.POST['34']
+        t33 = request.POST['33']
+
+        if len(estilo) !=0:
+            z = Zapatilla_a_almacen(estilo = estilo, precio_compra=precio_compra,proveedor=proveedor, talla_43=t43, talla_42=t42, talla_41=t41, talla_40=t40,talla_39=t39,talla_38=t38,talla_37=t37,talla_36=t36,talla_35=t35,talla_34=t34,talla_33=t33)    
+            z.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "CrearZapatilla.html", {"mensaje":mensaje})
 def registrarMateriales(request):
     mensaje = ""
     print("hola")
