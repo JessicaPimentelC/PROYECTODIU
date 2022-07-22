@@ -40,12 +40,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Menu Principal</span></a>
-            </li>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -56,31 +51,20 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'SolicitudObras' %}">
-                    <i class="fas fa-fw fa-drafting-compass"></i>
-                    <span>Solicitud de Obras</span>
-                </a>
-            </li>
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'AvancesDeObras' %}">
-                    <i class="fas fa-fw fa-building"></i>
-                    <span>Avances Obras</span></a>
-            </li>
+            
 
             <!-- Nav Item - Gestion clientes -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Gestión de Clientes</span>
+                    <span>Gestión de ventas</span>
                 </a>
                 <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'CrearCliente' %}">Crear Cliente</a>
-                        <a class="collapse-item" href="{% url 'ModificarCliente' %}">Modificar Cliente</a>
-                        <a class="collapse-item" href="{% url 'EliminarCliente' %}">Eliminar Cliente</a>
+                        <a class="collapse-item" href="{% url 'CrearVenta' %}">Registrar Venta</a>
+                        <a class="collapse-item" href="{% url 'ModificarCliente' %}">Modificar Venta</a>
+                        <a class="collapse-item" href="{% url 'EliminarCliente' %}">Eliminar Venta</a>
                     </div>
                 </div>
             </li>
@@ -88,7 +72,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'ConsultarClientes' %}">
                     <i class="fas fa-fw fa-search"></i>
-                    <span>Consultar Clientes</span>
+                    <span>Consultar Ventas</span>
                 </a>
             </li>
 

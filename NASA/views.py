@@ -10,6 +10,7 @@ from django.shortcuts import render
 # Conexión a la base de datos 
 from . import models
 Usuario = models.Usuario
+Ventas_almacen = models.Ventas_almacen
 
 
 def index(request):
@@ -130,6 +131,21 @@ def listaCliente(request):
 def verUsuario(request):
     return render(request, "verUsuario.html")
 
+def crearVenta(request):
+    mensaje = ""
+    if request.method == "POST":
+        zapatillas_a_alm = request.POST['id_zapatillas_a']
+        zapatillas_n_alm = request.POST['id_zapatillas_n']
+        talla = request.POST['talla']
+        precio_venta = request.POST['precio_venta']
+        fecha_venta = request.POST['fecha_venta']
+
+        if len(zapatillas_a_alm) !=0:
+            u = Ventas_almacen(id_zapatillas_a = zapatillas_a_alm, id_zapatillas_n=zapatillas_n_alm,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
+            u.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "CrearVenta.html", {"mensaje":mensaje})
+
 def crearUsuario(request):
     mensaje = ""
     if request.method == "POST":
@@ -153,24 +169,28 @@ def modificarUsuario(request):
     boton = ""
     mensaje = ""
     nombre= ""
+    cedula = ""
+    direccion= ""
     apellido1 =""
-    apellido2 = ""
     rol = ""
     correo = ""
+    estado=""
     if request.method == "POST" and request.POST['boton'] == "Buscar usuario a modificar":
         email = request.POST['emailUser']
         if len(email) !=0:            
-            u = Usuario.objects.filter(correo_usuario=email)   
+            u = Usuario.objects.filter(correo=email)   
             if len(u) == 1:
                 datos = u.get()
-                nombre = datos.nombre_usuario
-                apellido1 = datos.paterno_usuario
-                apellido2 = datos.materno_usuario
-                rol = datos.rol_usuario
-                correo = datos.correo_usuario
-                contrasena= datos.contrasena_usuario
+                nombre = datos.nombre
+                apellido1 = datos.apellidos
+                cedula = datos.cedula
+                direccion = datos.direccion
+                rol = datos.tipo_usuario
+                correo = datos.correo
+                contrasena= datos.contrasena
+                estado = datos.estado
                 boton = "Confirmar Modificación"
-                return render(request, "ModificarUsuario.html", {"boton":boton, "nombre": nombre, "estadoEmail": 'readonly', "apellido1": apellido1, "apellido2":apellido2, "rol":rol, "correo": correo, "contrasena": contrasena})
+                return render(request, "ModificarUsuario.html", {"boton":boton, "nombre": nombre, "estadoEmail": 'readonly', "apellido1": apellido1, "cedula":cedula, "direccion":direccion,"rol":rol, "correo": correo, "contrasena": contrasena,"estado":estado})
             if len(u) != 1:
                 mensaje = "No se encontró el usuario"
                 boton = "Buscar usuario a modificar"
@@ -184,11 +204,12 @@ def modificarUsuario(request):
 
     if request.method == "POST" and request.POST['boton'] == "Confirmar Modificación":
         email2 = request.POST['emailUser']
-        if len(request.POST['Nombre'])>0 and len(request.POST['PrimerApellido'])>0 and len(request.POST['SegundoApellido'])>0 and len(request.POST['Contraseña'])>0:
-            u = Usuario.objects.get(correo_usuario=email2)   
-            u.nombre_usuario = request.POST['Nombre']
-            u.paterno_usuario = request.POST['PrimerApellido']
-            u.materno_usuario = request.POST['SegundoApellido']
+        if len(request.POST['Nombre'])>0 and len(request.POST['PrimerApellido'])>0 and len(request.POST['SegundoApellido'])>0 and len(request.POST['direccion'])>0 and len(request.POST['Contraseña'])>0:
+            u = Usuario.objects.get(correo=email2)   
+            u.nombre = request.POST['Nombre']
+            u.apellidos = request.POST['PrimerApellido']
+            u.cedula = request.POST['SegundoApellido']
+            u.direccion = request.POST['direccion']
             if len(request.POST['rolUser']) != 0:
                 u.rol_usuario = request.POST['rolUser']
             u.contrasena_usuario = request.POST['Contraseña']
@@ -260,6 +281,7 @@ def consultarUsuario(request):
     direccion = ""
     telefono = ""
     correo = ""
+    estado = ""
     if request.method == "POST":
         email = request.POST['emailUser']
         if len(email) !=0:            
@@ -273,9 +295,10 @@ def consultarUsuario(request):
                 direccion = datos.direccion
                 telefono = datos.telefono
                 correo = datos.correo
+                estado =datos.estado
             else:
                 mensaje = "El usuario no existe"
-    return render(request, "ConsultarUsuario.html",{"mensaje":mensaje, "nombre": nombre, "apellido1": apellido1, "cedula":cedula,  "rol":rol,"direccion":direccion, "telefono":telefono, "correo": correo})
+    return render(request, "ConsultarUsuario.html",{"mensaje":mensaje, "nombre": nombre, "apellido1": apellido1, "cedula":cedula,  "rol":rol,"direccion":direccion, "telefono":telefono, "correo": correo, "estado":estado})
 
 def consultarClientes(request):
     return render(request, "ConsultarClientes.html")
