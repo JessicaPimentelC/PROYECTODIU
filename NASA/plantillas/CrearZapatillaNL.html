@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrador</title>
+    <title>Registrar una zapatilla</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -34,21 +34,18 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gestión Usuarios <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Punto fisico<sup></sup></div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <!-- Nav Item - Dashboard -->
+
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Menu
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
             <!-- Nav Item - Gestion usuarios Collapse Menu -->
 
 
@@ -103,15 +100,20 @@
                 </a>
             </li>
 
-            <!-- Divider -->
+
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'InterfazAdmin' %}">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Atras </span></a>
+            </li>
+
+
 
             <!-- Divider -->
-
+            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -309,22 +311,83 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800"></h1>
-                    <h1 style="text-align: center;">Bienvenido</h1>
-
-                    <div class="col-lg-6">
-
-                        <div class="card-body">
 
 
+                    <div class="row">
 
-                            <div class="sidebar-brand-icon">
-                                <img style="width: 1000px; position: center;" src="{% static 'img/Administrador.jpg'%}" />
+                        <div class="col-lg-6">
 
+                            <!-- Circle Buttons -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Llenar el siguiente formulario:</h6>
+                                </div>
+
+                                <!-- Brand Buttons -->
+                                <div class="card shadow mb-4"> </div>
+
+                                <form action="{% url 'crearZapatillaNL' %}" method="POST" class="zapatilla">
+                                    {% csrf_token %}
+
+                                    <SCript>
+                                        if ('{{mensaje}}'.length != 0)
+                                            alert('{{mensaje}}');
+                                    </SCript>
+
+                                    <div class="card-body">
+
+
+                                        <div class=" col-sm-4"></div>
+                                        <input type="text" class="form-control form-control-rzp" id="Estilo" name="estilo_n_l" placeholder="Estilo" required>&nbsp;
+                                        <input type="text" class="form-control form-control-rzp" id="Precio_compra" name="precio_compra_n_l" placeholder="Precio compra" required>&nbsp;
+                                        <input type="text" class="form-control form-control-rzp" id="Proveedor" name="proveedor_n_l" placeholder="Proveedor" required>&nbsp;
+
+                                        <div class="form-group row">
+
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="32_l" name="32_l" placeholder="32">&nbsp;
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="31_l" name="31_l" placeholder="31">&nbsp;
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="30_l" name="30_l" placeholder="30">&nbsp;
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="29_l" name="29_l" placeholder="29">&nbsp;
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="28_l" name="28_l" placeholder="28">&nbsp;
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="27_l" name="27_l" placeholder="27">&nbsp;
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="26_l" name="26_l" placeholder="26">&nbsp;
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="25_l" name="25_l" placeholder="25">&nbsp;
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="24_l" name="24_l" placeholder="24">&nbsp;
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-rzp" id="23_l" name="23_l" placeholder="23">&nbsp;
+                                            </div><div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-rzp" id="22_l" name="22_l" placeholder="22">&nbsp;
+                                            </div>
+                                            
+                                        </div>
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Registrar zapatilla">
+
+                                    </div>
+                                </form>
                             </div>
 
+                        </div>
 
+                        <div class="col-lg-6">
+                            <img style="width: 100%;position: center;" src="{% static 'img/CrearCliente.jpg'%}" />
                         </div>
 
                     </div>
@@ -339,7 +402,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Universidad del valle 2022</span>
                     </div>
                 </div>
             </footer>

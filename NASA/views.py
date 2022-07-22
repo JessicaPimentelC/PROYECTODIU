@@ -11,6 +11,9 @@ from django.shortcuts import render
 from . import models
 Usuario = models.Usuario
 Zapatilla_a_almacen = models.Zapatillas_a_almacen
+Zapatilla_n_almacen = models.Zapatillas_n_almacen
+Zapatilla_a_linea = models.Zapatillas_a_linea
+Zapatilla_n_linea = models.Zapatillas_n_linea
 
 
 def index(request):
@@ -278,7 +281,7 @@ def consultarClientes(request):
 def  avancesDeObras(request):
     return render(request, "AvancesDeObras.html")
 
-def crearZapatillaPF(request):
+def crearZapatillaAF(request):
     mensaje = ""
     if request.method == "POST":
         estilo = request.POST['estilo']
@@ -300,7 +303,76 @@ def crearZapatillaPF(request):
             z = Zapatilla_a_almacen(estilo = estilo, precio_compra=precio_compra,proveedor=proveedor, talla_43=t43, talla_42=t42, talla_41=t41, talla_40=t40,talla_39=t39,talla_38=t38,talla_37=t37,talla_36=t36,talla_35=t35,talla_34=t34,talla_33=t33)    
             z.save()
             mensaje = "guardado exitosamente"
-    return render(request, "CrearZapatilla.html", {"mensaje":mensaje})
+    return render(request, "CrearZapatillaAF.html", {"mensaje":mensaje})
+def crearZapatillaNF(request):
+    mensaje = ""
+    if request.method == "POST":
+        estilo = request.POST['estilo_n_f']
+        precio_compra = request.POST['precio_compra_n_f']
+        proveedor = request.POST['proveedor_n_f']
+        t32 = request.POST['32']
+        t31 = request.POST['31']
+        t30 = request.POST['30']
+        t29 = request.POST['29']
+        t28 = request.POST['28']
+        t27 = request.POST['27']
+        t26 = request.POST['26']
+        t25 = request.POST['25']
+        t24 = request.POST['24']
+        t23 = request.POST['23']
+        t22 = request.POST['22']
+
+        if len(estilo) !=0:
+            zna = Zapatilla_n_almacen(estilo = estilo, precio_compra=precio_compra,proveedor=proveedor, talla_32=t32, talla_31=t31, talla_30=t30,talla_29=t29,talla_28=t28,talla_27=t27,talla_26=t26,talla_25=t25,talla_24=t24,talla_23=t23,talla_22=t22)    
+            zna.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "CrearZapatillaNF.html", {"mensaje":mensaje})    
+def crearZapatillaAL(request):
+    mensaje = ""
+    if request.method == "POST":
+        estilo = request.POST['estilo_a_l']
+        precio_compra = request.POST['precio_compra_a_l']
+        proveedor = request.POST['proveedor_a_l']
+        t43 = request.POST['43_l']
+        t42 = request.POST['42_l']
+        t41 = request.POST['41_l']
+        t40 = request.POST['40_l']
+        t39 = request.POST['39_l']
+        t38 = request.POST['38_l']
+        t37 = request.POST['37_l']
+        t36 = request.POST['36_l']
+        t35 = request.POST['35_l']
+        t34 = request.POST['34_l']
+        t33 = request.POST['33_l']
+
+        if len(estilo) !=0:
+            zal = Zapatilla_a_linea(estilo = estilo, precio_compra=precio_compra,proveedor=proveedor, talla_43=t43, talla_42=t42, talla_41=t41, talla_40=t40,talla_39=t39,talla_38=t38,talla_37=t37,talla_36=t36,talla_35=t35,talla_34=t34,talla_33=t33)    
+            zal.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "CrearZapatillaAL.html", {"mensaje":mensaje})
+def crearZapatillaNL(request):
+    mensaje = ""
+    if request.method == "POST":
+        estilo = request.POST['estilo_n_l']
+        precio_compra = request.POST['precio_compra_n_l']
+        proveedor = request.POST['proveedor_n_l']
+        t32 = request.POST['32_l']
+        t31 = request.POST['31_l']
+        t30 = request.POST['30_l']
+        t29 = request.POST['29_l']
+        t28 = request.POST['28_l']
+        t27 = request.POST['27_l']
+        t26 = request.POST['26_l']
+        t25 = request.POST['25_l']
+        t24 = request.POST['24_l']
+        t23 = request.POST['23_l']
+        t22 = request.POST['22_l']
+
+        if len(estilo) !=0:
+            znl = Zapatilla_n_linea(estilo = estilo, precio_compra=precio_compra,proveedor=proveedor, talla_32=t32, talla_31=t31, talla_30=t30,talla_29=t29,talla_28=t28,talla_27=t27,talla_26=t26,talla_25=t25,talla_24=t24,talla_23=t23,talla_22=t22)    
+            znl.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "CrearZapatillaNL.html", {"mensaje":mensaje})
 def registrarMateriales(request):
     mensaje = ""
     print("hola")

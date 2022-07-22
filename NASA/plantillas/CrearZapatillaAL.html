@@ -34,7 +34,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Punto fisico<sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Punto en linea<sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -71,8 +71,22 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaPF' %}">Registrar una zapatilla</a>
-                        <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaAF' %}">Registrar una zapatilla adulto</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaNF' %}">Registrar una zapatilla niño</a>
+                        <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Punto en linea</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="{% url 'crearZapatillaAL' %}">Registrar una zapatilla adulto</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaNL' %}">Registrar una zapatilla niño</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
                     </div>
                 </div>
@@ -306,13 +320,13 @@
                             <!-- Circle Buttons -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Llenar el siguiente formulario para usuarios:</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Llenar el siguiente formulario:</h6>
                                 </div>
 
                                 <!-- Brand Buttons -->
                                 <div class="card shadow mb-4"> </div>
 
-                                <form action="{% url 'crearZapatillaPF' %}" method="POST" class="zapatilla">
+                                <form action="{% url 'crearZapatillaAL' %}" method="POST" class="zapatilla">
                                     {% csrf_token %}
 
                                     <SCript>
@@ -324,49 +338,43 @@
 
 
                                         <div class=" col-sm-4"></div>
-                                        <input type="text" class="form-control form-control-rzp" id="Estilo" name="estilo" placeholder="Estilo" required>&nbsp;
-                                        <input type="text" class="form-control form-control-rzp" id="Precio_compra" name="precio_compra" placeholder="Precio compra" required>&nbsp;
-                                        <input type="text" class="form-control form-control-rzp" id="Proveedor" name="proveedor" placeholder="Proveedor" required>&nbsp;
+                                        <input type="text" class="form-control form-control-rzp" id="Estilo" name="estilo_a_l" placeholder="Estilo" required>&nbsp;
+                                        <input type="text" class="form-control form-control-rzp" id="Precio_compra" name="precio_compra_a_l" placeholder="Precio compra" required>&nbsp;
+                                        <input type="text" class="form-control form-control-rzp" id="Proveedor" name="proveedor_a_l" placeholder="Proveedor" required>&nbsp;
 
                                         <div class="form-group row">
 
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="43" name="43" placeholder="43">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="43_l" name="43_l" placeholder="43">&nbsp;
                                             </div>
                                             <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="42" name="42" placeholder="42">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="42_l" name="42_l" placeholder="42">&nbsp;
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="41" name="41" placeholder="41">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="41_l" name="41_l" placeholder="41">&nbsp;
                                             </div>
                                             <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="40" name="40" placeholder="40">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="40_l" name="40_l" placeholder="40">&nbsp;
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="41" name="41" placeholder="41">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="39_l" name="39_l" placeholder="39">&nbsp;
                                             </div>
                                             <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="40" name="40" placeholder="40">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="38_l" name="38_l" placeholder="38">&nbsp;
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="39" name="39" placeholder="39">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="37_l" name="37_l" placeholder="37">&nbsp;
                                             </div>
                                             <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="38" name="38" placeholder="38">&nbsp;
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="37" name="37" placeholder="37">&nbsp;
-                                            </div>
-                                            <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="36" name="36" placeholder="36">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="36_l" name="36_l" placeholder="36">&nbsp;
                                             </div><div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="35" name="35" placeholder="35">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="35_l" name="35_l" placeholder="35">&nbsp;
                                             </div>
                                             <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="34" name="34" placeholder="34">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="34_l" name="34_l" placeholder="34">&nbsp;
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="33" name="33" placeholder="33">&nbsp;
+                                                <input type="text" class="form-control form-control-rzp" id="33_l" name="33_l" placeholder="33">&nbsp;
                                             </div>
                                             
                                         </div>
