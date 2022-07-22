@@ -46,6 +46,7 @@ urlpatterns = [
     path('ConsultarUsuario.html/', views.consultarUsuario, name='ConsultarUsuario'),
     path('ModificarUsuario.html/', views.modificarUsuario, name='ModificarUsuario'),
     path('EliminarUsuario.html/', views.eliminarUsuario, name='EliminarUsuario'),
+    path('verUsuario.html/', views.verUsuario, name='VerUsuario'),
     path('InterfazAdmin.html/', views.interfazAdmin, name='InterfazAdmin'),
     path('InterfazEmpleado.html/', views.interfazEmpleado, name='InterfazEmpleado'),
     path('ConsultarClientes.html/', views.consultarClientes, name='ConsultarClientes'),

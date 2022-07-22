@@ -18,7 +18,7 @@ def index(request):
 
     email = request.POST['user_email']
     password = request.POST['user_password']
-
+    
 
     usuario_db = Usuario.objects.filter(correo = email)
     # usuario con correo igual
@@ -41,8 +41,7 @@ def index(request):
             return render(request, "InterfazEmpleado.html")
     else:
       #Contraseña incorrecta  
-      return render(request, "login.html")  
-
+        return render(request, "login.html")
 
     # aqui no debería llegar pero dejo el return por cuestiones de evitar errores
     return render(request, "login.html")
@@ -127,6 +126,9 @@ def eliminarCliente(request):
 
 def listaCliente(request):
     return render(request, "listaCliente.html")
+
+def verUsuario(request):
+    return render(request, "verUsuario.html")
 
 def crearUsuario(request):
     mensaje = ""
@@ -255,6 +257,8 @@ def consultarUsuario(request):
     apellido1 =""
     cedula = ""
     rol = ""
+    direccion = ""
+    telefono = ""
     correo = ""
     if request.method == "POST":
         email = request.POST['emailUser']
@@ -266,10 +270,12 @@ def consultarUsuario(request):
                 apellido1 = datos.apellidos
                 cedula = datos.cedula
                 rol = datos.tipo_usuario
+                direccion = datos.direccion
+                telefono = datos.telefono
                 correo = datos.correo
             else:
                 mensaje = "El usuario no existe"
-    return render(request, "ConsultarUsuario.html",{"mensaje":mensaje, "nombre": nombre, "apellido1": apellido1, "cedula":cedula,  "rol":rol, "correo": correo})
+    return render(request, "ConsultarUsuario.html",{"mensaje":mensaje, "nombre": nombre, "apellido1": apellido1, "cedula":cedula,  "rol":rol,"direccion":direccion, "telefono":telefono, "correo": correo})
 
 def consultarClientes(request):
     return render(request, "ConsultarClientes.html")

@@ -83,11 +83,9 @@ DATABASES = {
         'USER': 'ntpvxjapxoumev',
         'PASSWORD': '9b1ae49c0b3af169fbe9d9fccc47be9134e7684979c952972c5e0b1e731429ab',
         'HOST': 'ec2-34-227-120-79.compute-1.amazonaws.com',
-        'DATABASE_PORT': '5432'
+        'DATABASE_PORT': '5432' 
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
