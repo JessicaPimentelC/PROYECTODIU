@@ -210,9 +210,10 @@ def modificarUsuario(request):
             u.apellidos = request.POST['PrimerApellido']
             u.cedula = request.POST['SegundoApellido']
             u.direccion = request.POST['direccion']
+            u.estado = request.POST['estado']
+            u.tipo_usuario = request.POST['rolUser']
             if len(request.POST['rolUser']) != 0:
-                u.rol_usuario = request.POST['rolUser']
-            u.contrasena_usuario = request.POST['Contraseña']
+                u.tipo_usuario = request.POST['rolUser']
             u.save()
             mensaje = "Se modificó exitosamente"
             boton = "Buscar usuario a modificar"
