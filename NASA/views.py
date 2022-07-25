@@ -195,7 +195,7 @@ def modificarUsuario(request):
                 mensaje = "No se encontró el usuario"
                 boton = "Buscar usuario a modificar"
                 rol="-Seleccione Rol-"
-                return render(request, "ModificarUsuario.html", {"mensaje":mensaje, "boton": boton,"rol":rol, "estadoEmail": 'required'})
+                return render(request, "ModificarUsuario.html", {"boton":boton, "nombre": nombre, "estadoEmail": 'readonly', "apellido1": apellido1, "cedula":cedula, "direccion":direccion,"rol":rol, "correo": correo, "contrasena": contrasena,"estado":estado})
         else:
             mensaje = "No se encontró el usuario"
             boton = "Buscar usuario a modificar"
@@ -212,6 +212,7 @@ def modificarUsuario(request):
             u.direccion = request.POST['direccion']
             u.estado = request.POST['estado']
             u.tipo_usuario = request.POST['rolUser']
+            
             if len(request.POST['rolUser']) != 0:
                 u.tipo_usuario = request.POST['rolUser']
             u.save()

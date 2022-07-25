@@ -317,19 +317,19 @@
                                         <input type="text" class="form-control form-control-user" id="PrimerApellido" name="PrimerApellido" value="{{apellido1}}" placeholder="Apellidos">&nbsp;
                                         <input type="text" class="form-control form-control-user" id="SegundoApellido" name="SegundoApellido" value="{{cedula}}" placeholder="Cedula">&nbsp;
 
-                                        <div class="form-group row">
-                                            <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-user" id="direccion" name="direccion" value="{{direccion}}" placeholder="Direccion">&nbsp;
-                                            </div>
-                                            <div class="col-sm-4 ">
-                                                <select class="form-control-select col-sm-20" name="estado" id="estado">
+                                        <div class="form-group row mb-3">
+                                            
+                                            <div class="col-sm-4">
+                                                <select class="form-control-select" name="estado" id="estado">
                                                     <option value="" selected>{{estado}}</option>
                                                     <option value="Activo">Activo</option>
                                                     <option value="Inactivo">Inactivo</option>
-                                                </select>
+                                            </select>
 
                                             </div>
-                                            
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-user" name="direccion" id="direccion" value="{{direccion}}" placeholder="Direccion">
+                                            </div>
                                         </div>
                                         <div class="form-group row mb-3">
                                             
