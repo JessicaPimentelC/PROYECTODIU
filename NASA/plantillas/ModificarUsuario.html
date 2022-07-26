@@ -60,20 +60,11 @@
                         <a class="collapse-item" href="{% url 'CrearUsuario' %}">Crear Usuario</a>
                         <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
+                        <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
+
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Collapse Consultar usuarios -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'ConsultarUsuario' %}">
-                    <i class="fas fa-fw fa-search"></i>
-                    <span>Consultar Usuarios</span>
-                </a>
-            </li>
-
-
-            <hr class="sidebar-divider">
 
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'InterfazAdmin' %}">
@@ -83,9 +74,6 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-
-
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -254,23 +242,20 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{nombre_usuario}}{{primerApellido_usuario}}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle" src="{% static 'img/undraw_profile.svg' %}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> PERFIL
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>CONFIGURACION
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CERRAR SESION
                                 </a>
                             </div>
                         </li>
@@ -314,19 +299,31 @@
 
                                         <div class=" col-sm-4"></div>
                                         <input type="text" class="form-control form-control-user" id="Nombre" name="Nombre" value="{{nombre}}" placeholder="Nombre">&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="PrimerApellido" name="PrimerApellido" value="{{apellido1}}" placeholder="Primer Apellido">&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="SegundoApellido" name="SegundoApellido" value="{{apellido2}}" placeholder="Segundo Apellido">&nbsp;
+                                        <input type="text" class="form-control form-control-user" id="PrimerApellido" name="PrimerApellido" value="{{apellido1}}" placeholder="Apellidos">&nbsp;
+                                        <input type="text" class="form-control form-control-user" id="SegundoApellido" name="SegundoApellido" value="{{cedula}}" placeholder="Cedula">&nbsp;
 
+                                        <div class="form-group row mb-3">
+                                            
+                                            <div class="col-sm-4">
+                                                <select class="form-control-select" name="estado" id="estado">
+                                                    <option value="" selected>{{estado}}</option>
+                                                    <option value="Activo">Activo</option>
+                                                    <option value="Inactivo">Inactivo</option>
+                                            </select>
 
-                                        <div class="form-group row">
-
+                                            </div>
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-user" name="direccion" id="direccion" value="{{direccion}}" placeholder="Direccion">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            
                                             <div class="col-sm-4">
                                                 <select class="form-control-select" name="rolUser" id="rolUser">
                                                     <option value="" selected>{{rol}}</option>
                                                     <option value="Admin">Admin</option>
-                                                    <option value="Gerente">Gerente</option>
-                                                    <option value="Jefe_de_Obra">Jefe de Obra</option>
-                                                    <option value="Jefe_de_Almacen">Jefe de Almacen</option>
+                                                    <option value="Empleado">Empleado</option>
+                                                    
                                             </select>
 
                                             </div>
@@ -365,7 +362,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Universidad del Valle 2021</span>
+                        <span>Copyright &copy; Universidad del Valle 2022</span>
                     </div>
                 </div>
             </footer>

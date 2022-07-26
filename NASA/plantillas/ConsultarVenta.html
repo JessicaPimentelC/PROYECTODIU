@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrador</title>
+    <title>Consultar</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -30,25 +30,22 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'InterfazAdmin' %}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'InterfazEmpleado' %}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gestión Usuarios <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Gestión Ventas<sup></sup></div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Menu
-            </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
             <!-- Nav Item - Gestion usuarios Collapse Menu -->
 
 
@@ -63,49 +60,31 @@
                         <a class="collapse-item" href="{% url 'CrearUsuario' %}">Crear Usuario</a>
                         <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
-                        <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
-
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto fisico</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAF' %}">Registrar una zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNF' %}">Registrar una zapatilla niño</a>
-                        <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto en linea</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAL' %}">Registrar una zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNL' %}">Registrar una zapatilla niño</a>
-                        <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
                     </div>
                 </div>
             </li>
 
+            <!-- Nav Item - Collapse Consultar usuarios -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'ConsultarUsuario' %}">
+                    <i class="fas fa-fw fa-search"></i>
+                    <span>Consultar Usuarios</span>
+                </a>
+            </li>
+
+
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'InterfazAdmin' %}">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Atras </span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
 
-            <!-- Nav Item - Pages Collapse Menu -->
-
-            <!-- Divider -->
 
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -292,7 +271,6 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
 
                 </nav>
@@ -302,23 +280,106 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800"></h1>
-                    <h1 style="text-align: center;">Bienvenido</h1>
+                    <h1 class="h3 mb-4 text-gray-800" style="text-align: center;">Consultar Usuario</h1>
 
-                    <div class="col-lg-6">
+                    <div class="row">
 
-                        <div class="card-body">
+                        <div class="col-lg-6">
 
+                            <!-- Circle Buttons -->
 
+                            <div class="card-header py-3">
 
-                            <div class="sidebar-brand-icon">
-                                <img style="width: 1000px; position: center;" src="{% static 'img/Administrador.jpg'%}" />
-
+                                <h6 class="m-0 font-weight-bold text-primary">Ingrese el correo para consultar:</h6>
                             </div>
+                            <form action="{% url 'ConsultarUsuario' %}" method="POST" class="user">
+                                {% csrf_token %}
 
+                                <SCript>
+                                    if ('{{mensaje}}'.length != 0)
+                                        alert('{{mensaje}}');
+                                </SCript>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <label for="Nombre" class="col-2 col-form-label">Nombre </label>
+                                        <input type="text" class="col form-control form-control-user" id="Nombre" name="nombre_usuario" value="{{nombre}}" readonly>&nbsp;
+                                        <label for="Apellidos" class="col-2 col-form-label">Apellidos</label>
+                                        <input type="text" class="col form-control form-control-user" id="PrimerApellido" name="primerApellido_usuario" value="{{apellido1}}" readonly>&nbsp;
+                                    </div>&nbsp;
+                                    <div class="row">
+                                        <label for="Cedula" class="col-2 col-form-label">Cedula</label>
+                                        <input type="text" class="col form-control form-control-user" id="Cedula" name="cedula" value="{{cedula}}" readonly>&nbsp;
+                                        <label for="exampleRolUser" class="col-2 col-form-label">Rol</label>
+                                        <input type="text" class="col form-control form-control-user" name="rolUser" id="exampleRolUser" value="{{rol}}" readonly>
+                                    </div>&nbsp;
+                                    <div class="row">
+                                        <label for="Direccion" class="col-2 col-form-label">Direccion</label>
+                                        <input type="text" class="col form-control form-control-user" id="Direccion" name="direccion" value="{{direccion}}" readonly>&nbsp;
+                                        <label for="Telefono" class="col-2 col-form-label">Telefono</label>
+                                        <input type="text" class="col form-control form-control-user" name="Telefono" id="telefono" value="{{telefono}}" readonly>
+                                    </div>&nbsp;
+                                    <div class="row">
+                                        <label for="emailUser" class="col-2 col-form-label">Email</label>
+                                        <input type="email" class="col form-control form-control-user" name="emailUser" id="exampleInputEmail" value="{{correo}}" placeholder="Escriba aquí el correo electrónico" required>
+                                    </div>&nbsp;
+                                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Consultar Usuario">
+                                </div>
+                        </div>
+
+                        <div class="col-lg-6">
+
+                            <div class="card shadow mb-4">
+
+                                <img style="width: 100%; position: center;" src="{% static 'img/Consultas.jpg'%}" />
+
+                                <div class="card-body">
+
+
+                                </div>
+                            </div>
 
                         </div>
 
+                    </div>
+                    <div class="container">
+
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Lista usuarios</h6>
+                            </div>
+                            <form action="{% url 'ConsultarUsuario' %}" method="POST" class="user"></form>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>CEDULA</th>
+                                                <th>NOMBRES </th>
+                                                <th>APELLIDOS</th>
+                                                <th>TELEFONO</th>
+                                                <th>ROL</th>
+                                                <th>ESTADO</th>
+                                            </tr>
+                                        </thead>
+                                    
+                                        <tbody>
+                                        
+                                            <tr>
+                                                <td>{{cedula}}</td>
+                                                <td>{{nombre}}</td>
+                                                <td>{{apellido1}}</td>
+                                                <td>{{telefono}}</td>
+                                                <td>{{rol}}</td>
+                                                <td>{{estado}}</td>
+                                                
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -331,7 +392,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2022</span>
+                        <span>Copyright &copy; Universidad del Valle 2022</span>
                     </div>
                 </div>
             </footer>
