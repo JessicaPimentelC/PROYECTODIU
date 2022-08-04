@@ -50,7 +50,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Gestión de Usuarios</span>
                 </a>
@@ -60,55 +60,46 @@
                         <a class="collapse-item" href="{% url 'CrearUsuario' %}">Crear Usuario</a>
                         <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
+                        <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
 
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="collapseTwo1" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Punto fisico</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAF' %}">Registrar una zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNF' %}">Registrar una zapatilla niño</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaAF' %}">Registrar zapatilla adulto</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaNF' %}">Registrar zapatilla niño</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="collapseTwo2" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Punto en linea</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAL' %}">Registrar una zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNL' %}">Registrar una zapatilla niño</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaAL' %}">Registrar zapatilla adulto</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaNL' %}">Registrar zapatilla niño</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Collapse Consultar usuarios -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'ConsultarUsuario' %}">
-                    <i class="fas fa-fw fa-search"></i>
-                    <span>Consultar Usuarios</span>
-                </a>
-            </li>
-
-
-            <hr class="sidebar-divider">
-
-
+       
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'InterfazAdmin' %}">
                     <i class="fas fa-arrow-left"></i>
-                    <span>Atras </span></a>
+                    <span>Atrás </span></a>
             </li>
 
 
@@ -421,15 +412,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Desea salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{% url 'login' %}">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="{% url 'login' %}">Cerrar sesión</a>
                 </div>
             </div>
         </div>

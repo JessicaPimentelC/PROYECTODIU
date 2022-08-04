@@ -53,13 +53,13 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="collapseCliente" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Gestión de Usuarios</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
+                        <h6 class="collapse-header">Opciones:</h6>  
                         <a class="collapse-item" href="{% url 'CrearUsuario' %}">Crear Usuario</a>
                         <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
@@ -69,29 +69,29 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Punto fisico</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAF' %}">Registrar una zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNF' %}">Registrar una zapatilla niño</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaAF' %}">Registrar zapatilla adulto</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaNF' %}">Registrar zapatilla niño</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="collapseTwo2" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Punto en linea</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAL' %}">Registrar una zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNL' %}">Registrar una zapatilla niño</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaAL' %}">Registrar zapatilla adulto</a>
+                        <a class="collapse-item" href="{% url 'crearZapatillaNL' %}">Registrar zapatilla niño</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -154,7 +154,7 @@
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -312,7 +312,7 @@
 
 
                             <div class="sidebar-brand-icon">
-                                <img style="width: 1000px; position: center;" src="{% static 'img/Administrador.jpg'%}" />
+                                <img style="width: 1000px; position: center;" src="{% static 'img/FONDO.png'%}" />
 
                             </div>
 

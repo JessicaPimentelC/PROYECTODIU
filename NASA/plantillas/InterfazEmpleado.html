@@ -40,8 +40,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -55,9 +53,9 @@
 
             <!-- Nav Item - Gestion clientes -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="collapseCliente" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Gestión de ventas</span>
+                    <span>Punto físico</span>
                 </a>
                 <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -65,18 +63,27 @@
                         <a class="collapse-item" href="{% url 'CrearVenta' %}">Registrar Venta</a>
                         <a class="collapse-item" href="{% url 'ModificarCliente' %}">Modificar Venta</a>
                         <a class="collapse-item" href="{% url 'EliminarCliente' %}">Eliminar Venta</a>
+                        
                     </div>
                 </div>
             </li>
-            <!-- Nav Item - Consultar clientes Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'ConsultarClientes' %}">
-                    <i class="fas fa-fw fa-search"></i>
-                    <span>Consultar Ventas</span>
+                <a class="nav-link collapsed" href="collapseCliente2" data-toggle="collapse" data-target="#collapseCliente2" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Punto en línea</span>
                 </a>
+                <div id="collapseCliente2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="{% url 'CrearVenta' %}">Registrar Venta</a>
+                        <a class="collapse-item" href="{% url 'ModificarCliente' %}">Modificar Venta</a>
+                        <a class="collapse-item" href="{% url 'EliminarCliente' %}">Eliminar Venta</a>
+                        
+                    </div>
+                </div>
             </li>
-
             
+                     
 
            
 
@@ -113,7 +120,7 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -283,6 +290,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"></h1>
+                    <h1 style="text-align: center;">Bienvenido</h1>
 
                     <div class="row">
 
@@ -332,15 +340,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Desea salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{% url 'login' %}">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="{% url 'login' %}">Cerrar sesión</a>
                 </div>
             </div>
         </div>

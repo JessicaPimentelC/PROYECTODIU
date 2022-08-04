@@ -31,23 +31,25 @@ def index(request):
     print(len(usuario_db))
     if len(usuario_db) == 0:
         # No existe el correo ingresado en la base de datos
+        
         return render(request, "login.html")
     
     datos = usuario_db.get()
 
     password_db = datos.contrasena
     rol_db = datos.tipo_usuario
+    estado_db = datos.estado
 
     if password == password_db:
-        if rol_db == "Admin":
+        if rol_db == "Admin" and estado_db=="Activo" :
             return render(request, "InterfazAdmin.html")
 
-        if rol_db == "Empleado":
+        if rol_db == "Empleado" and estado_db=="Activo":
             return render(request, "InterfazEmpleado.html")
     else:
       #Contraseña incorrecta  
-        return render(request, "login.html")
-
+       
+        return render(request, "login.html")        
     # aqui no debería llegar pero dejo el return por cuestiones de evitar errores
     return render(request, "login.html")
 
