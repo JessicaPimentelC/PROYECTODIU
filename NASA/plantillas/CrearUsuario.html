@@ -54,10 +54,11 @@
                     <i class="fas fa-fw fa-users"></i>
                     <span>Gestión de Usuarios</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'CrearUsuario' %}">Crear Usuario</a>
+                        
+                        <a class="collapse-item " href="{% url 'CrearUsuario' %}">Crear Usuario</a>
                         <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
                         <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
                         <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
@@ -95,7 +96,10 @@
             </li>
 
             <!-- Nav Item - Collapse Consultar usuarios -->
-       
+            
+            <hr class="sidebar-divider">
+
+
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'InterfazAdmin' %}">
                     <i class="fas fa-arrow-left"></i>
@@ -132,7 +136,7 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -331,7 +335,7 @@
                                         <input type="text" class="form-control form-control-user" id="Apellidos" name="apellidos" placeholder="Apellidos">&nbsp;
                                         <input type="text" class="form-control form-control-user" id="Cedula" name="cedula" placeholder="Cedula" required>&nbsp;
                                         <input type="text" class="form-control form-control-user" id="Direccion" name="direccion" placeholder="Direccion">&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="Telefono" name="telefono" placeholder="Telefono">&nbsp;
+                                        <input type="text" class="form-control form-control-user" id="Telefono" name="telefono" placeholder="Telefono" required maxlength="10">&nbsp;
 
                                         <div class="form-group row">
 

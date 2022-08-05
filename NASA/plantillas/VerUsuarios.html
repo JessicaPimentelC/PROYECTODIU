@@ -34,7 +34,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gestión Ventas<sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Gestión Usuarios<sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -48,12 +48,25 @@
 
             <!-- Nav Item - Gestion usuarios Collapse Menu -->
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="collapseCliente" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>  
+                        <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
+                        <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
 
+                    </div>
+                </div>
+            </li>
         
 
             <!-- Nav Item - Collapse Consultar usuarios -->
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'InterfazEmpleado' %}">
+                <a class="nav-link" href="{% url 'InterfazAdmin' %}">
                     <i class="fas fa-fw fa-search"></i>
                     <span>Menú Principal</span>
                 </a>
@@ -61,9 +74,9 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'InterfazEmpleado' %}">
+                <a class="nav-link" href="{% url 'InterfazAdmin' %}">
                     <i class="fas fa-arrow-left"></i>
-                    <span>Atras </span></a>
+                    <span>Atrás </span></a>
             </li>
 
             <!-- Divider -->
@@ -266,31 +279,37 @@
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Lista Ventas</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Lista Usuarios</h6>
                             </div>
-                            <form action="{% url 'ConsultarVenta' %}" method="POST" class="user"></form>
+                            <form action="{% url 'verUsuarios' %}" method="POST" class="user"></form>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>ZAPATILLAS ADULTO</th>
-                                                <th>ZAPATILLAS NIÑO </th>
-                                                <th>TALLA</th>
-                                                <th>PRECIO VENTA</th>
-                                                <th>FECHA VENTA</th>
+                                                <th>NOMBRES Y APELLIDOS</th>
+                                                <th>IDENTIFICACION </th>
+                                                <th>DIRECCION</th>
+                                                <th>TELEFONO</th>
+                                                <th>CORREO</th>
+                                                <th>ROL</th>
+                                                <th>ESTADO</th>
+
+
                                             </tr>
                                         </thead>
                                     
                                         <tbody>
-                                        {% for venta in ventas%}
+                                        {% for usuario in usuarios%}
                                             <tr>
-                                                <td>{{venta.id_zapatillas_a}}</td>
-                                                <td>{{venta.id_zapatillas_n}}</td>
-                                                <td>{{venta.talla}}</td>
-                                                <td>{{venta.precio_venta}}</td>
-                                                <td>{{venta.fecha_venta}}</td>
-                                                
+                                                <td>{{usuario.nombre}} {{usuario.apellidos}}</td>
+                                                <td>{{usuario.cedula}}</td>
+                                                <td>{{usuario.direccion}}</td>
+                                                <td>{{usuario.telefono}}</td>
+                                                <td>{{usuario.correo}}</td>
+                                                <td>{{usuario.tipo_usuario}}</td>
+                                                <td>{{usuario.estado}}</td>
+
                                             </tr>
                                         {% endfor %}
 

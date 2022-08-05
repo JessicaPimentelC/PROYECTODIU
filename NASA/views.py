@@ -15,7 +15,7 @@ Zapatilla_n_almacen = models.Zapatillas_n_almacen
 Zapatilla_a_linea = models.Zapatillas_a_linea
 Zapatilla_n_linea = models.Zapatillas_n_linea
 Ventas_almacen = models.Ventas_almacen
-
+Ventas_linea = models.Ventas_linea
 
 def index(request):
     # Post enviado desde formulario en login
@@ -151,6 +151,45 @@ def crearVenta(request):
             u.save()
             mensaje = "guardado exitosamente"
     return render(request, "CrearVenta.html", {"mensaje":mensaje})
+
+def crearVentaEL(request):
+    mensaje = ""
+    if request.method == "POST":
+        zapatillas_a_alm = request.POST['id_zapatillas_a']
+        zapatillas_n_alm = request.POST['id_zapatillas_n']
+        talla = request.POST['talla']
+        precio_venta = request.POST['precio_venta']
+        fecha_venta = request.POST['fecha_venta']
+
+        if len(zapatillas_a_alm) !=0:
+            u = Ventas_linea(id_zapatillas_a = zapatillas_a_alm, id_zapatillas_n=zapatillas_n_alm,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
+            u.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "CrearVentaEL.html", {"mensaje":mensaje})
+
+def consultarVenta(request):
+    mensaje = ""
+    id_zapatillas_a =""
+    id_zapatillas_n = ""
+    talla = ""
+    precio_venta = ""
+    fecha_venta = ""
+    
+    if request.method == "POST":
+        fecha = request.POST['precio_venta']
+        if len(fecha) !=0:            
+            u = Ventas_almacen.objects.filter(precio_venta=fecha)   
+            if len(u) == 1:
+                datos = u.get()
+                id_zapatillas_a = datos.id_zapatillas_a
+                id_zapatillas_n = datos.id_zapatillas_n
+                talla = datos.talla
+                precio_venta = datos.precio_venta
+                fecha_venta = datos.fecha_venta
+                
+            else:
+                mensaje = "La venta no existe"
+    return render(request, "ConsultarVenta.html",{"mensaje":mensaje, "id_zapatillas_a": id_zapatillas_a, "id_zapatillas_n":id_zapatillas_n,  "talla":talla,"precio_venta":precio_venta, "fecha_venta":fecha_venta})
 
 def crearUsuario(request):
     mensaje = ""
@@ -406,6 +445,18 @@ def crearZapatillaNL(request):
             znl.save()
             mensaje = "guardado exitosamente"
     return render(request, "CrearZapatillaNL.html", {"mensaje":mensaje})
+
+def listarVenta(request):
+    ventas = Ventas_almacen.objects.all()
+    contexto = {"ventas":ventas}
+    return render(request, "ConsultarVenta.html", contexto)
+
+def listarUsuarios(request):
+    usuarios = Usuario.objects.all()
+    contexto = {"usuarios":usuarios}
+    return render(request, "VerUsuarios.html", contexto)
+
+
 def registrarMateriales(request):
     mensaje = ""
     print("hola")
