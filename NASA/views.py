@@ -1,4 +1,5 @@
 from cgi import print_environ
+from cmath import pi
 from email.policy import default
 from django.db.models.query import EmptyQuerySet
 from django.forms import EmailField
@@ -155,11 +156,9 @@ def crearVenta(request):
             u = Ventas_almacen(id_zapatillas_a = zapatillas_a_alm, id_zapatillas_n=zapatillas_n_alm,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
             u.save()
             print(zapatillas_a_alm)
-            if request.method == "POST" or zapatillas_a_alm == 2:
-                print("tercer if")
-                restaInventarioZap_aA(request,talla)
-                print("hizo funcion")
-                mensaje = "guardado exitosamente"
+            restaInventarioZap_aA(request,talla,zapatillas_a_alm)
+            print("hizo funcion")
+            mensaje = "guardado exitosamente"
     return render(request, "CrearVenta.html", {"mensaje":mensaje})
 
 def crearVentaEL(request):
@@ -177,28 +176,34 @@ def crearVentaEL(request):
             mensaje = "guardado exitosamente"
     return render(request, "CrearVentaEL.html", {"mensaje":mensaje})
 
-def restaInventarioZap_aA(request,tallap):
-    talla = Ventas_almacen.objects.filter(talla = tallap).values()
-    t37 = Zapatilla_a_almacen.objects.filter(talla_37 = 1).values()
-    print(tallap)
-    
+def restaInventarioZap_aA(request,tallap,codZapA):
+    print("hola funcion restar")
 
-    if tallap == tallap:
-        print(t37)
-        print(talla)
-        print(t37[0])
-        for x in t37:
-            print (x)
-            for i in x:
-                if i=="talla_37":
-                    print("entro a if de tall 37")
-                    dismin = Zapatilla_a_almacen.objects.get(talla_37=2)
-                    dismin.talla_37 -= 1
-                    dismin.save()
-
-                    return render(request, "CrearZapatillaAF.html",{talla:talla})
-
-                    ##HACER UN SAVE CON LOS DATOS INGRESADOS
+    dismin = Zapatilla_a_almacen.objects.get(id_zap_a_almacen=codZapA)
+    if tallap == "33":
+        dismin.talla_33 -= 1
+    elif tallap == "34":
+        dismin.talla_34 -= 1
+    elif tallap == "35":
+        dismin.talla_35 -= 1
+    elif tallap == "36":
+        dismin.talla_36 -= 1
+    elif tallap == "37":
+        print("37??")
+        dismin.talla_37 += 5
+    elif tallap == "38":
+        dismin.talla_38 -= 1
+    elif tallap == "39":
+        dismin.talla_39 -= 1
+    elif tallap == "40":
+        dismin.talla_40 -= 1
+    elif tallap == "41":
+        dismin.talla_41 -= 1
+    elif tallap == "42":
+        dismin.talla_42 -= 1
+    elif tallap == "43":
+        dismin.talla_43 -= 1                        
+    dismin.save()
                                 
     return render(request, "CrearVenta.html",{talla:talla})
 
