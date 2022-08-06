@@ -1,4 +1,5 @@
 from typing import Optional
+from typing_extensions import Required
 from django.db import models
 
 class Usuario(models.Model):
@@ -8,15 +9,15 @@ class Usuario(models.Model):
     apellidos = models.CharField(max_length=50)
     direccion = models.CharField(max_length=50)
     telefono = models.CharField(max_length=50)
-    correo = models.CharField(max_length=50)
+    correo = models.EmailField(max_length=50)
     tipo_usuario = models.CharField(max_length=50)
     contrasena = models.CharField(max_length=50)
     estado = models.CharField(max_length=50)
 
 class Ventas_almacen(models.Model):
     id_ventas_a = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
-    id_zapatillas_a = models.IntegerField()
-    id_zapatillas_n = models.IntegerField()
+    id_zapatillas_a = models.IntegerField(null=True)
+    id_zapatillas_n = models.IntegerField(null=True)
     talla = models.IntegerField()
     precio_venta = models.IntegerField()
     fecha_venta = models.DateTimeField(max_length=50)

@@ -1,4 +1,7 @@
+from cgi import print_environ
+from email.policy import default
 from django.db.models.query import EmptyQuerySet
+from django.forms import EmailField
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
@@ -24,7 +27,6 @@ def index(request):
     email = request.POST['user_email']
     password = request.POST['user_password']
     
-
     usuario_db = Usuario.objects.filter(correo = email)
     # usuario con correo igual
     print(usuario_db)
@@ -139,17 +141,25 @@ def verUsuario(request):
 
 def crearVenta(request):
     mensaje = ""
+
     if request.method == "POST":
+        print("primer if")
         zapatillas_a_alm = request.POST['id_zapatillas_a']
         zapatillas_n_alm = request.POST['id_zapatillas_n']
         talla = request.POST['talla']
         precio_venta = request.POST['precio_venta']
         fecha_venta = request.POST['fecha_venta']
 
-        if len(zapatillas_a_alm) !=0:
+        if (len(zapatillas_a_alm) !=0):
+            print("segundo if")
             u = Ventas_almacen(id_zapatillas_a = zapatillas_a_alm, id_zapatillas_n=zapatillas_n_alm,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
             u.save()
-            mensaje = "guardado exitosamente"
+            print(zapatillas_a_alm)
+            if request.method == "POST" or zapatillas_a_alm == 2:
+                print("tercer if")
+                restaInventarioZap_aA(request,talla)
+                print("hizo funcion")
+                mensaje = "guardado exitosamente"
     return render(request, "CrearVenta.html", {"mensaje":mensaje})
 
 def crearVentaEL(request):
@@ -166,6 +176,37 @@ def crearVentaEL(request):
             u.save()
             mensaje = "guardado exitosamente"
     return render(request, "CrearVentaEL.html", {"mensaje":mensaje})
+
+def restaInventarioZap_aA(request,tallap):
+    talla = Ventas_almacen.objects.filter(talla = tallap).values()
+    t37 = Zapatilla_a_almacen.objects.filter(talla_37 = 1).values()
+    print(tallap)
+    
+
+    if tallap == tallap:
+        print(t37)
+        print(talla)
+        print(t37[0])
+        for x in t37:
+            print (x)
+            for i in x:
+                if i=="talla_37":
+                    print("entro a if de tall 37")
+                    dismin = Zapatilla_a_almacen.objects.get(talla_37=2)
+                    dismin.talla_37 -= 1
+                    dismin.save()
+
+                    return render(request, "CrearZapatillaAF.html",{talla:talla})
+
+                    ##HACER UN SAVE CON LOS DATOS INGRESADOS
+                                
+    return render(request, "CrearVenta.html",{talla:talla})
+
+
+def eliminarZapatilla_a_A(request, zapatillas_a_alm):
+    proveedor = Ventas_almacen.objects.filter(id_zapatillas_a=zapatillas_a_alm)
+    proveedor.delete()
+    return render(request, "CrearVenta.html",{proveedor:proveedor})
 
 def consultarVenta(request):
     mensaje = ""
