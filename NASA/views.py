@@ -152,32 +152,30 @@ def crearVenta(request):
         fecha_venta = request.POST['fecha_venta']
 
         if (len(zapatillas_a_alm) !=0):
-            print("segundo if")
             u = Ventas_almacen(id_zapatillas_a = zapatillas_a_alm, id_zapatillas_n=zapatillas_n_alm,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
             u.save()
-            print(zapatillas_a_alm)
             restaInventarioZap_aA(request,talla,zapatillas_a_alm)
-            print("hizo funcion")
+            restaInventarioZap_nA(request,talla,zapatillas_n_alm)
             mensaje = "guardado exitosamente"
     return render(request, "CrearVenta.html", {"mensaje":mensaje})
 
 def crearVentaEL(request):
     mensaje = ""
     if request.method == "POST":
-        zapatillas_a_alm = request.POST['id_zapatillas_a']
-        zapatillas_n_alm = request.POST['id_zapatillas_n']
+        zapatillas_a_lin = request.POST['id_zapatillas_a']
+        zapatillas_n_lin = request.POST['id_zapatillas_n']
         talla = request.POST['talla']
         precio_venta = request.POST['precio_venta']
         fecha_venta = request.POST['fecha_venta']
 
-        if len(zapatillas_a_alm) !=0:
-            u = Ventas_linea(id_zapatillas_a = zapatillas_a_alm, id_zapatillas_n=zapatillas_n_alm,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
+        if len(zapatillas_a_lin) !=0:
+            u = Ventas_linea(id_zapatillas_a = zapatillas_a_lin, id_zapatillas_n=zapatillas_n_lin,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
             u.save()
+            restaInventarioZap_nL(request,talla,zapatillas_n_lin)
             mensaje = "guardado exitosamente"
     return render(request, "CrearVentaEL.html", {"mensaje":mensaje})
 
 def restaInventarioZap_aA(request,tallap,codZapA):
-    print("hola funcion restar")
 
     dismin = Zapatilla_a_almacen.objects.get(id_zap_a_almacen=codZapA)
     if tallap == "33":
@@ -189,8 +187,7 @@ def restaInventarioZap_aA(request,tallap,codZapA):
     elif tallap == "36":
         dismin.talla_36 -= 1
     elif tallap == "37":
-        print("37??")
-        dismin.talla_37 += 5
+        dismin.talla_37 -= 1
     elif tallap == "38":
         dismin.talla_38 -= 1
     elif tallap == "39":
@@ -205,9 +202,94 @@ def restaInventarioZap_aA(request,tallap,codZapA):
         dismin.talla_43 -= 1                        
     dismin.save()
                                 
-    return render(request, "CrearVenta.html",{talla:talla})
+    return render(request, "CrearVenta.html",{dismin:dismin})
 
+def restaInventarioZap_nA(request,tallap,codZapN):
 
+    dismin = Zapatilla_n_almacen.objects.get(id_zap_n_almacen=codZapN)
+    if tallap == "32":
+        dismin.talla_32 -= 1
+    elif tallap == "31":
+        dismin.talla_31 -= 1
+    elif tallap == "30":
+        dismin.talla_30 -= 1
+    elif tallap == "29":
+        dismin.talla_29 -= 1
+    elif tallap == "28":
+        dismin.talla_28 -= 1
+    elif tallap == "27":
+        dismin.talla_27 -= 1
+    elif tallap == "26":
+        dismin.talla_26 -= 1
+    elif tallap == "25":
+        dismin.talla_25 -= 1
+    elif tallap == "24":
+        dismin.talla_24 -= 1
+    elif tallap == "23":
+        dismin.talla_23 -= 1
+    elif tallap == "22":
+        dismin.talla_22 -= 1                        
+    dismin.save()
+                                
+    return render(request, "CrearVenta.html",{dismin:dismin})
+
+def restaInventarioZap_aL(request,tallap,codZapA):
+    
+    dismin = Zapatilla_a_linea.objects.get(id_zap_a_linea=codZapA)
+    if tallap == "33":
+        dismin.talla_33 -= 1
+    elif tallap == "34":
+        dismin.talla_34 -= 1
+    elif tallap == "35":
+        dismin.talla_35 -= 1
+    elif tallap == "36":
+        dismin.talla_36 -= 1
+    elif tallap == "37":
+        dismin.talla_37 -= 1
+    elif tallap == "38":
+        dismin.talla_38 -= 1
+    elif tallap == "39":
+        dismin.talla_39 -= 1
+    elif tallap == "40":
+        dismin.talla_40 -= 1
+    elif tallap == "41":
+        dismin.talla_41 -= 1
+    elif tallap == "42":
+        dismin.talla_42 -= 1
+    elif tallap == "43":
+        dismin.talla_43 -= 1                        
+    dismin.save()
+                                
+    return render(request, "CrearVenta.html",{dismin:dismin})
+
+def restaInventarioZap_nL(request,tallap,codZapN):
+
+    dismin = Zapatilla_n_linea.objects.get(id_zap_n_linea=codZapN)
+    if tallap == "32":
+        dismin.talla_32 -= 1
+    elif tallap == "31":
+        dismin.talla_31 -= 1
+    elif tallap == "30":
+        dismin.talla_30 -= 1
+    elif tallap == "29":
+        dismin.talla_29 -= 1
+    elif tallap == "28":
+        dismin.talla_28 -= 1
+    elif tallap == "27":
+        dismin.talla_27 -= 1
+    elif tallap == "26":
+        dismin.talla_26 -= 1
+    elif tallap == "25":
+        dismin.talla_25 -= 1
+    elif tallap == "24":
+        dismin.talla_24 -= 1
+    elif tallap == "23":
+        dismin.talla_23 -= 1
+    elif tallap == "22":
+        dismin.talla_22 -= 1                        
+    dismin.save()
+                                
+    return render(request, "CrearVenta.html",{dismin:dismin})
 def eliminarZapatilla_a_A(request, zapatillas_a_alm):
     proveedor = Ventas_almacen.objects.filter(id_zapatillas_a=zapatillas_a_alm)
     proveedor.delete()
