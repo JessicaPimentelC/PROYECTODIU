@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>EMPLEADO</title>
+    <title>Consultar</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -30,70 +30,44 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'index' %}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'InterfazEmpleado' %}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gestión Empleado <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Gestión Ventas<sup></sup></div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Menú
-            </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            
+            <!-- Nav Item - Gestion usuarios Collapse Menu -->
 
-            <!-- Nav Item - Gestion clientes -->
+            <!-- Nav Item - Collapse Consultar usuarios -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseCliente" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto físico</span>
+                <a class="nav-link" href="{% url 'InterfazEmpleado' %}">
+                    <i class="fas fa-fw fa-search"></i>
+                    <span>Menú Principal</span>
                 </a>
-                <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'CrearVenta' %}">Registrar Venta</a>
-                        <a class="collapse-item" href="{% url 'ModificarCliente' %}">Modificar Venta</a>
-                        <a class="collapse-item" href="{% url 'ConsultarVenta' %}">Consultar Ventas</a>
-
-                    </div>
-                </div>
             </li>
+
+
             <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseCliente2" data-toggle="collapse" data-target="#collapseCliente2" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto en línea</span>
-                </a>
-                <div id="collapseCliente2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'CrearVentaEL' %}">Registrar Venta</a>
-                        <a class="collapse-item" href="{% url 'ModificarCliente' %}">Modificar Venta</a>
-                        <a class="collapse-item" href="{% url 'ConsultarVentaEL' %}">Consultar Venta</a>
-                        
-                    </div>
-                </div>
+                <a class="nav-link" href="{% url 'InterfazEmpleado' %}">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Atras </span></a>
             </li>
-            
-                     
-
-           
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            
-
-            
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider">
+
+
+
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -271,46 +245,62 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> PERFIL
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>CONFIGURACIÓN
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>CONFIGURACION
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CERRAR SESIÓN
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CERRAR SESION
                                 </a>
                             </div>
                         </li>
-
                     </ul>
 
                 </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                    <div class="container">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800"></h1>
-                    <h1 style="text-align: center;">Bienvenido</h1>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Lista Ventas en línea</h6>
+                            </div>
+                            <form action="{% url 'ConsultarVentaEL' %}" method="POST" class="user"></form>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ZAPATILLAS ADULTO</th>
+                                                <th>ZAPATILLAS NIÑO </th>
+                                                <th>TALLA</th>
+                                                <th>PRECIO VENTA</th>
+                                                <th>FECHA VENTA</th>
+                                            </tr>
+                                        </thead>
+                                    
+                                        <tbody>
+                                        {% for venta in ventas%}
+                                            <tr>
+                                                <td>{{venta.id_zapatillas_a}}</td>
+                                                <td>{{venta.id_zapatillas_n}}</td>
+                                                <td>{{venta.talla}}</td>
+                                                <td>{{venta.precio_venta}}</td>
+                                                <td>{{venta.fecha_venta}}</td>
+                                                
+                                            </tr>
+                                        {% endfor %}
 
-                    <div class="row">
-
-                        <div class="col-lg-6">
-
-                            
-                               <div class="card-body">
-                                <div class="sidebar-brand-icon">
-                                    <img style="width: 1000px; height: 800px;position: center;" src="{% static 'img/Gerente.jpg'%}"
-                                    />
+                                        </tbody>
+                                    </table>
                                 </div>
-                                
-                                </div>
-
+                            </div>
                         </div>
                     </div>
 
                 </div>
                 <!-- /.container-fluid -->
-
+        </div>
             </div>
             <!-- End of Main Content -->
 
@@ -318,7 +308,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Universidad del Valle 2022</span>
                     </div>
                 </div>
             </footer>
@@ -340,7 +330,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Desea salir?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Desea salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

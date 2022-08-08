@@ -1,5 +1,5 @@
 from cgi import print_environ
-from cmath import pi
+from cmath import cos, pi
 from email.policy import default
 from django.db.models.query import EmptyQuerySet
 from django.forms import EmailField
@@ -20,6 +20,8 @@ Zapatilla_a_linea = models.Zapatillas_a_linea
 Zapatilla_n_linea = models.Zapatillas_n_linea
 Ventas_almacen = models.Ventas_almacen
 Ventas_linea = models.Ventas_linea
+GastosVariable_Almacen = models.Gastos_Variable_almacen
+GastosVariable_Linea = models.Gastos_Variable_linea
 
 def index(request):
     # Post enviado desde formulario en login
@@ -474,6 +476,44 @@ def consultarUsuario(request):
             else:
                 mensaje = "El usuario no existe"
     return render(request, "ConsultarUsuario.html",{"mensaje":mensaje, "nombre": nombre, "apellido1": apellido1, "cedula":cedula,  "rol":rol,"direccion":direccion, "telefono":telefono, "correo": correo, "estado":estado})
+def consultarGastoVA(request):
+    mensaje = ""
+    costo= ""
+    fecha =""
+    descripcion = ""
+    
+    if request.method == "POST":
+        fecha = request.POST['fecha']
+        if len(fecha) !=0:            
+            u = GastosVariable_Almacen.objects.filter(fecha=fecha)   
+            if len(u) == 1:
+                datos = u.get()
+                costo = datos.costo
+                fecha = datos.fecha
+                descripcion = datos.descripcion
+                
+            else:
+                mensaje = "El gasto no existe"
+    return render(request, "ConsultarGastoVA.html",{"mensaje":mensaje, "costo": costo, "fecha": fecha, "descripcion":descripcion})
+def consultarGastoVL(request):
+    mensaje = ""
+    costo= ""
+    fecha =""
+    descripcion = ""
+    
+    if request.method == "POST":
+        fecha = request.POST['fecha']
+        if len(fecha) !=0:            
+            u = GastosVariable_Linea.objects.filter(fecha=fecha)   
+            if len(u) == 1:
+                datos = u.get()
+                costo = datos.costo
+                fecha = datos.fecha
+                descripcion = datos.descripcion
+                
+            else:
+                mensaje = "El gasto no existe"
+    return render(request, "ConsultarGastoVA.html",{"mensaje":mensaje, "costo": costo, "fecha": fecha, "descripcion":descripcion})
 
 def consultarClientes(request):
     return render(request, "ConsultarClientes.html")
@@ -578,6 +618,11 @@ def listarVenta(request):
     ventas = Ventas_almacen.objects.all()
     contexto = {"ventas":ventas}
     return render(request, "ConsultarVenta.html", contexto)
+    
+def listarVentaEL(request):
+    ventas = Ventas_linea.objects.all()
+    contexto = {"ventas":ventas}
+    return render(request, "ConsultarVentaEL.html", contexto)
 
 def listarUsuarios(request):
     usuarios = Usuario.objects.all()
