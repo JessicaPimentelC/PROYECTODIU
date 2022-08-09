@@ -4,6 +4,7 @@ import datetime
 from django.template import Template, Context
 from django.template.loader import get_template
 from django.shortcuts import render
+from datetime import datetime
 
 
 
@@ -15,7 +16,9 @@ Zapatilla_n_almacen = models.Zapatillas_n_almacen
 Zapatilla_a_linea = models.Zapatillas_a_linea
 Zapatilla_n_linea = models.Zapatillas_n_linea
 Ventas_almacen = models.Ventas_almacen
-
+Gastos_Variable_almacen = models.Gastos_Variable_almacen
+Gastos_Fijos_Almacen = models.Gastos_Fijos_Almacen
+Gastos_Variable_linea = models.Gastos_Variable_linea
 
 def index(request):
     # Post enviado desde formulario en login
@@ -406,6 +409,179 @@ def crearZapatillaNL(request):
             znl.save()
             mensaje = "guardado exitosamente"
     return render(request, "CrearZapatillaNL.html", {"mensaje":mensaje})
+def registrarPedidoAF(request):
+    mensaje = ""
+    if request.method == "POST":
+        estilo = request.POST['estilo_p_p_a']
+        t43 = request.POST['43_p_p_a']
+        t42 = request.POST['42_p_p_a']
+        t41 = request.POST['41_p_p_a']
+        t40 = request.POST['40_p_p_a']
+        t39 = request.POST['39_p_p_a']
+        t38 = request.POST['38_p_p_a']
+        t37 = request.POST['37_p_p_a']
+        t36 = request.POST['36_p_p_a']
+        t35 = request.POST['35_p_p_a']
+        t34 = request.POST['34_p_p_a']
+        t33 = request.POST['33_p_p_a']
+
+        if len(estilo) !=0:           
+            estiloP = Zapatilla_a_almacen.objects.filter(estilo=estilo) 
+            if len(estiloP) == 1:
+                datos = estiloP.get()
+                u = Zapatilla_a_almacen.objects.get(estilo=estilo)  
+                u.talla_43 = int(t43)+datos.talla_43
+                u.talla_42 = int(t42)+datos.talla_42
+                u.talla_41 = int(t41)+datos.talla_41
+                u.talla_40 = int(t40)+datos.talla_40
+                u.talla_39 = int(t39)+datos.talla_39
+                u.talla_38 = int(t38)+datos.talla_38
+                u.talla_37 = int(t37)+datos.talla_37
+                u.talla_36 = int(t36)+datos.talla_36
+                u.talla_35 = int(t35)+datos.talla_35
+                u.talla_34 = int(t34)+datos.talla_34
+                u.talla_33 = int(t33)+datos.talla_33
+                mensaje = "guardado exitosamente"
+                u.save()
+    return render(request, "RegistrarPedidoAF.html", {"mensaje":mensaje}) 
+def registrarPedidoNF(request):
+    mensaje = ""
+    if request.method == "POST":
+        estilo = request.POST['estilo_p_p_n']
+        t32 = request.POST['32_p_p_n']
+        t31 = request.POST['31_p_p_n']
+        t30 = request.POST['30_p_p_n']
+        t29 = request.POST['29_p_p_n']
+        t28 = request.POST['28_p_p_n']
+        t27 = request.POST['27_p_p_n']
+        t26 = request.POST['26_p_p_n']
+        t25 = request.POST['25_p_p_n']
+        t24 = request.POST['24_p_p_n']
+        t23 = request.POST['23_p_p_n']
+        t22 = request.POST['23_p_p_n']
+
+        if len(estilo) !=0:           
+            estiloP = Zapatilla_n_almacen.objects.filter(estilo=estilo) 
+            if len(estiloP) == 1:
+                datos = estiloP.get()
+                u = Zapatilla_n_almacen.objects.get(estilo=estilo) 
+                u.talla_32 = int(t32)+datos.talla_32
+                u.talla_31 = int(t31)+datos.talla_31
+                u.talla_30 = int(t30)+datos.talla_30
+                u.talla_29 = int(t29)+datos.talla_29
+                u.talla_28 = int(t28)+datos.talla_28
+                u.talla_27 = int(t27)+datos.talla_27
+                u.talla_26 = int(t26)+datos.talla_26
+                u.talla_25 = int(t25)+datos.talla_25
+                u.talla_24 = int(t24)+datos.talla_24
+                u.talla_23 = int(t23)+datos.talla_23
+                u.talla_22 = int(t22)+datos.talla_22
+                mensaje = "guardado exitosamente"
+                u.save()
+    return render(request, "RegistrarPedidoNF.html", {"mensaje":mensaje})     
+def registrarPedidoAL(request):
+    mensaje = ""
+    if request.method == "POST":
+        estilo = request.POST['estilo_p_l_a']
+        t43 = request.POST['43_p_l_a']
+        t42 = request.POST['42_p_l_a']
+        t41 = request.POST['41_p_l_a']
+        t40 = request.POST['40_p_l_a']
+        t39 = request.POST['39_p_l_a']
+        t38 = request.POST['38_p_l_a']
+        t37 = request.POST['37_p_l_a']
+        t36 = request.POST['36_p_l_a']
+        t35 = request.POST['35_p_l_a']
+        t34 = request.POST['34_p_l_a']
+        t33 = request.POST['33_p_l_a']
+
+        if len(estilo) !=0:           
+            estiloP = Zapatilla_a_linea.objects.filter(estilo=estilo) 
+            if len(estiloP) == 1:
+                datos = estiloP.get()
+                u = Zapatilla_a_linea.objects.get(estilo=estilo)  
+                u.talla_43 = int(t43)+datos.talla_43
+                u.talla_42 = int(t42)+datos.talla_42
+                u.talla_41 = int(t41)+datos.talla_41
+                u.talla_40 = int(t40)+datos.talla_40
+                u.talla_39 = int(t39)+datos.talla_39
+                u.talla_38 = int(t38)+datos.talla_38
+                u.talla_37 = int(t37)+datos.talla_37
+                u.talla_36 = int(t36)+datos.talla_36
+                u.talla_35 = int(t35)+datos.talla_35
+                u.talla_34 = int(t34)+datos.talla_34
+                u.talla_33 = int(t33)+datos.talla_33
+                mensaje = "guardado exitosamente"
+                u.save()
+    return render(request, "RegistrarPedidoAL.html", {"mensaje":mensaje}) 
+def registrarPedidoNL(request):
+    mensaje = ""
+    if request.method == "POST":
+        estilo = request.POST['estilo_p_l_n']
+        t32 = request.POST['32_p_l_n']
+        t31 = request.POST['31_p_l_n']
+        t30 = request.POST['30_p_l_n']
+        t29 = request.POST['29_p_l_n']
+        t28 = request.POST['28_p_l_n']
+        t27 = request.POST['27_p_l_n']
+        t26 = request.POST['26_p_l_n']
+        t25 = request.POST['25_p_l_n']
+        t24 = request.POST['24_p_l_n']
+        t23 = request.POST['23_p_l_n']
+        t22 = request.POST['23_p_l_n']
+
+        if len(estilo) !=0:           
+            estiloP = Zapatilla_n_linea.objects.filter(estilo=estilo) 
+            if len(estiloP) == 1:
+                datos = estiloP.get()
+                u = Zapatilla_n_linea.objects.get(estilo=estilo) 
+                u.talla_32 = int(t32)+datos.talla_32
+                u.talla_31 = int(t31)+datos.talla_31
+                u.talla_30 = int(t30)+datos.talla_30
+                u.talla_29 = int(t29)+datos.talla_29
+                u.talla_28 = int(t28)+datos.talla_28
+                u.talla_27 = int(t27)+datos.talla_27
+                u.talla_26 = int(t26)+datos.talla_26
+                u.talla_25 = int(t25)+datos.talla_25
+                u.talla_24 = int(t24)+datos.talla_24
+                u.talla_23 = int(t23)+datos.talla_23
+                u.talla_22 = int(t22)+datos.talla_22
+                mensaje = "guardado exitosamente"
+                u.save()
+    return render(request, "RegistrarPedidoNL.html", {"mensaje":mensaje})
+def ingresarGastosVariablesF(request):
+    mensaje = ""
+    if request.method == "POST":
+        Costo = request.POST['costoG_v_f']
+        Descripcion = request.POST['descripcionG_v_f']
+
+        if len(Costo) !=0:
+            gvf = Gastos_Variable_almacen(costo = Costo, fecha = datetime.today().strftime('%Y-%m-%d'), descripcion = Descripcion)
+            gvf.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "ingresarGastosVariablesF.html", {"mensaje":mensaje})
+def ingresarGastosFijosF(request):
+    mensaje = ""
+    if request.method == "POST":
+        Costo = request.POST['costoG_f_f']
+        Descripcion = request.POST['descripcionG_f_f']
+
+        if len(Costo) !=0:
+            gff = Gastos_Fijos_Almacen(costo = Costo, fecha = datetime.today().strftime('%Y-%m-%d'), descripcion = Descripcion)
+            gff.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "ingresarGastosFijosF.html", {"mensaje":mensaje})
+def ingresarGastosVariablesL(request):
+    mensaje = ""
+    if request.method == "POST":
+        Costo = request.POST['costoG_v_l']
+        Descripcion = request.POST['descripcionG_v_l']
+
+        if len(Costo) !=0:
+            gvl = Gastos_Variable_linea(costo = Costo, fecha = datetime.today().strftime('%Y-%m-%d'), descripcion = Descripcion)
+            gvl.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "ingresarGastosVariablesL.html", {"mensaje":mensaje})    
 def registrarMateriales(request):
     mensaje = ""
     print("hola")
