@@ -21,27 +21,31 @@
 
 </head>
 
-<body class="bg-gradient-dark">
+<body style="background-size: cover" background="{%static 'img/shoes.jpg'%}"
 
     <div class="container">
-
+    </br>
+    </br>
+        <!--<div style="background-color: rgb(210, 191, 238);">
+            <h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size: 50px; color:black; text-align: center;"><strong>NASA SPORT</strong></h1>
+        </div>-->
         <!-- Outer Row -->
-        <div class="row justify-content-center">
+        <div style="width: 1100px;"" class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div style="background-color: rgb(221, 206, 238)" class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-                        <div class="row">
+                        <div class="row" style="height: 420px;">
                             
                             
                                 <div class="sidebar-brand-icon">
-                                    <img style="height: 380px; width: 450px; " src="{% static 'img/logo.jpeg' %}"
+                                    <img style="height: 420px; width: 450px; " src="{% static 'img/logo.jpeg' %}"
                                     />
                                 </div>                               
                             
-                                <div class="card-body">
+                                <div class="card-body" style="height: 450px;">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
                                     </div>
@@ -54,15 +58,13 @@
                                             <input type="password"  class="form-control form-control-user" name="user_password" placeholder="Contraseña">
                                         </div>
 
-                                        <input type=submit class="btn btn-primary btn-user btn-block" placeholder="Ingresar">
+                                        <button type=submit class="btn btn-primary btn-block" placeholder="Ingresar">Ingresar</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="{% url 'forgot-password' %}">Olvidó su contraseña?</a>
                                     </div>
-                                    <div class="text-center">
-                                        <a class="small" href="{% url 'register' %}">Crear una Cuenta!</a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

@@ -109,3 +109,9 @@ class Gastos_Variable_linea(models.Model):
     costo = models.IntegerField()
     fecha = models.DateField()
     descripcion = models.CharField(max_length=200)
+
+class Gastos_Fijos_Almacen(models.Model):
+    id_gasto_variable_l = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    costo = models.IntegerField()
+    fecha = models.DateField()
+    descripcion = models.CharField(max_length=200)
