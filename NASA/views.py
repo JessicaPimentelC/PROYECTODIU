@@ -93,6 +93,30 @@ def solicitarMaterialesObra(request):
 def interfazJefeAlmacen(request):
     return render(request, "interfazJefeAlmacen.html")
 
+def gestionZapatillas(request):
+    return render(request, "GestionZapatillas.html")
+
+def gestionZapatillasEL(request):
+    return render(request, "GestionZapatillasEL.html")
+   
+def gestionPedidos(request):
+    return render(request, "GestionPedidos.html")
+
+def gestionPedidosEL(request):
+    return render(request, "GestionPedidosEL.html")
+
+def gestionVentas(request):
+    return render(request, "GestionVentas.html")
+
+def gestionVentasEL(request):
+    return render(request, "GestionVentasEL.html")
+
+def gestionGastos(request):
+    return render(request, "GestionGastos.html")
+
+def gestionGastosEL(request):
+    return render(request, "GestionGastosEL.html")
+
 def interfazJefeObra(request):
     return render(request, "interfazJefeObra.html")
 
