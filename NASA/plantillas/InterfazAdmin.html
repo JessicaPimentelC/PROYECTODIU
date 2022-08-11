@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrador</title>
+    <title>ADMINISTRADOR</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -45,7 +45,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Menu
+                Menú
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -62,7 +62,7 @@
                         <h6 class="collapse-header">Opciones:</h6>  
                         <a class="collapse-item" href="{% url 'CrearUsuario' %}">Crear Usuario</a>
                         <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
-                        <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
+                        <a class="collapse-item" href="{% url 'verUsuarios' %}">Ver Usuarios</a>
                         <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
 
                     </div>
@@ -71,7 +71,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Punto fisico</span>
+                    <span>Punto físico</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -82,13 +82,17 @@
                         <a class="collapse-item" href="{% url 'RegistrarPedidoNF' %}">Registrar pedido niño</a>
                         <a class="collapse-item" href="{% url 'ingresarGastosVariablesF' %}">Registrar gastos variables</a>
                         <a class="collapse-item" href="{% url 'ingresarGastosFijosF' %}">Registrar gastos fijos</a>
+                        <a class="collapse-item" href="{% url 'verGastosFijos' %}">Ver gastos fijos</a>
+                        <a class="collapse-item" href="{% url 'ModificarGastosFijos' %}">Editar gastos fijos</a>
+                        <a class="collapse-item" href="{% url 'ConsultarZapatillaAF' %}">Buscar zapatilla adulto</a>
+                        <a class="collapse-item" href="{% url 'ConsultarZapatillaNF' %}">Buscar zapatilla niño</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="collapseTwo2" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Punto en linea</span>
+                    <span>Punto en línea</span>
                 </a>
                 <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -98,6 +102,8 @@
                         <a class="collapse-item" href="{% url 'RegistrarPedidoAL' %}">Registrar pedido adulto</a>
                         <a class="collapse-item" href="{% url 'RegistrarPedidoNL' %}">Registrar pedido niño</a>
                         <a class="collapse-item" href="{% url 'ingresarGastosVariablesL' %}">Registrar gastos variables</a>
+                        <a class="collapse-item" href="{% url 'ConsultarZapatillaAL' %}">Buscar zapatilla adulto</a>
+                        <a class="collapse-item" href="{% url 'ConsultarZapatillaNL' %}">Buscar zapatilla niño</a>
                     </div>
                 </div>
             </li>

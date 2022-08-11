@@ -19,6 +19,7 @@ Ventas_almacen = models.Ventas_almacen
 Gastos_Variable_almacen = models.Gastos_Variable_almacen
 Gastos_Fijos_Almacen = models.Gastos_Fijos_Almacen
 Gastos_Variable_linea = models.Gastos_Variable_linea
+Ventas_linea = models.Ventas_linea
 
 def index(request):
     # Post enviado desde formulario en login
@@ -154,6 +155,45 @@ def crearVenta(request):
             u.save()
             mensaje = "guardado exitosamente"
     return render(request, "CrearVenta.html", {"mensaje":mensaje})
+
+def crearVentaEL(request):
+    mensaje = ""
+    if request.method == "POST":
+        zapatillas_a_alm = request.POST['id_zapatillas_a']
+        zapatillas_n_alm = request.POST['id_zapatillas_n']
+        talla = request.POST['talla']
+        precio_venta = request.POST['precio_venta']
+        fecha_venta = request.POST['fecha_venta']
+
+        if len(zapatillas_a_alm) !=0:
+            u = Ventas_linea(id_zapatillas_a = zapatillas_a_alm, id_zapatillas_n=zapatillas_n_alm,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
+            u.save()
+            mensaje = "guardado exitosamente"
+    return render(request, "CrearVentaEL.html", {"mensaje":mensaje})
+
+def consultarVenta(request):
+    mensaje = ""
+    id_zapatillas_a =""
+    id_zapatillas_n = ""
+    talla = ""
+    precio_venta = ""
+    fecha_venta = ""
+    
+    if request.method == "POST":
+        fecha = request.POST['precio_venta']
+        if len(fecha) !=0:            
+            u = Ventas_almacen.objects.filter(precio_venta=fecha)   
+            if len(u) == 1:
+                datos = u.get()
+                id_zapatillas_a = datos.id_zapatillas_a
+                id_zapatillas_n = datos.id_zapatillas_n
+                talla = datos.talla
+                precio_venta = datos.precio_venta
+                fecha_venta = datos.fecha_venta
+                
+            else:
+                mensaje = "La venta no existe"
+    return render(request, "ConsultarVenta.html",{"mensaje":mensaje, "id_zapatillas_a": id_zapatillas_a, "id_zapatillas_n":id_zapatillas_n,  "talla":talla,"precio_venta":precio_venta, "fecha_venta":fecha_venta})
 
 def crearUsuario(request):
     mensaje = ""
@@ -581,7 +621,192 @@ def ingresarGastosVariablesL(request):
             gvl = Gastos_Variable_linea(costo = Costo, fecha = datetime.today().strftime('%Y-%m-%d'), descripcion = Descripcion)
             gvl.save()
             mensaje = "guardado exitosamente"
-    return render(request, "ingresarGastosVariablesL.html", {"mensaje":mensaje})    
+    return render(request, "ingresarGastosVariablesL.html", {"mensaje":mensaje})  
+def listarVenta(request):
+    ventas = Ventas_almacen.objects.all()
+    contexto = {"ventas":ventas}
+    return render(request, "ConsultarVenta.html", contexto)
+
+def listarUsuarios(request):
+    usuarios = Usuario.objects.all()
+    contexto = {"usuarios":usuarios}
+    return render(request, "VerUsuarios.html", contexto)
+def verGastosFijos(request):
+    gastos = Gastos_Fijos_Almacen.objects.all()
+    contexto = {"gastos": gastos}
+    return render(request, "VerGastosFijos.html", contexto)
+def ModificarGastosFijos(request):
+    boton = ""
+    mensaje = ""
+    id_= ""
+    descripcion = ""
+    costo= ""
+    if request.method == "POST" and request.POST['boton_'] == "Buscar gasto a modificar":
+        id_ = request.POST['id']
+        if len(id_) !=0:            
+            u = Gastos_Fijos_Almacen.objects.filter(id_gasto_variable_l=id_)   
+            if len(u) == 1:
+                datos = u.get()
+                descripcion = datos.descripcion
+                costo = datos.costo
+                boton = "Confirmar Modificación"
+                return render(request, "ModificarGastosFijosF.html", {"boton_":boton, "descripcion":descripcion,"costo":costo,"id":id_,"estadoId": 'readonly'})
+            if len(u) != 1:
+                mensaje = "No se encontró el gasto"
+                boton = "Buscar gasto a modificar"
+                return render(request, "ModificarGastosFijosF.html", {"boton_":boton,"descripcion":descripcion,"costo":costo,"estadoId": 'readonly' })
+        else:
+            mensaje = "No se encontró el usuario"
+            boton = "Buscar gasto a modificar"
+            return render(request, "ModificarGastosFijosF.html", {"boton_":boton,"descripcion":descripcion,"costo":costo,"estadoId": 'required' })
+
+    if request.method == "POST" and request.POST['boton_'] == "Confirmar Modificación":
+        id_ = request.POST['id']
+        if len(request.POST['Descripcion'])>0 and len(request.POST['Costo'])>0:
+            u = Gastos_Fijos_Almacen.objects.get(id_gasto_variable_l=id_)   
+            u.descripcion = request.POST['Descripcion']
+            u.costo = request.POST['Costo']
+            u.save()
+            mensaje = "Se modificó exitosamente"
+            boton = "Buscar gasto a modificar"
+            return render(request, "ModificarGastosFijosF.html", {"mensaje":mensaje,"boton_":boton,"descripcion":descripcion,"costo":costo,"estadoId": 'required' })       
+    else:
+        boton = "Buscar gasto a modificar"
+        return render(request, "ModificarGastosFijosF.html", {"boton_":boton, "estadoId": 'required'})
+
+def ConsultarZapatillaAF(request):  
+    mensaje = ""
+    t43 = ""
+    t42 = ""
+    t41 = ""
+    t40 = ""
+    t39 = ""
+    t38 = ""
+    t37 = ""
+    t36 = ""
+    t35 = ""
+    t34 = ""
+    t33 = ""
+    if request.method == "POST":
+        estilo = request.POST['estiloZapatillaAF']
+        if len(estilo) !=0:            
+            u = Zapatilla_a_almacen.objects.filter(estilo=estilo)   
+            if len(u) == 1:
+                datos = u.get()
+                t43 = datos.talla_43
+                t42 = datos.talla_42
+                t41 = datos.talla_41
+                t40 = datos.talla_40
+                t39 = datos.talla_39
+                t38 = datos.talla_38
+                t37 = datos.talla_37
+                t36 = datos.talla_36
+                t35 = datos.talla_35
+                t34 = datos.talla_34
+                t33 = datos.talla_33
+            else:
+                mensaje = "La zapatilla no existe"
+    return render(request, "ConsultarZapatillaAF.html",  {"mensaje":mensaje, "t43":t43,"t42":t42,"t41":t41,"t40":t40,"t39":t39,"t38":t38,"t37":t37,"t36":t36,"t35":t35,"t34":t34,"t33":t33})
+def ConsultarZapatillaNF(request):  
+    mensaje = ""
+    t32 = ""
+    t31 = ""
+    t30 = ""
+    t29 = ""
+    t28 = ""
+    t27 = ""
+    t26 = ""
+    t25 = ""
+    t24 = ""
+    t23 = ""
+    t22 = ""
+    if request.method == "POST":
+        estilo = request.POST['estiloZapatillaNF']
+        if len(estilo) !=0:            
+            u = Zapatilla_n_almacen.objects.filter(estilo=estilo)   
+            if len(u) == 1:
+                datos = u.get()
+                t32 = datos.talla_32
+                t31 = datos.talla_31
+                t30 = datos.talla_30
+                t29 = datos.talla_29
+                t28 = datos.talla_28
+                t27 = datos.talla_27
+                t26 = datos.talla_26
+                t25 = datos.talla_25
+                t24 = datos.talla_24
+                t23 = datos.talla_23
+                t22 = datos.talla_22
+            else:
+                mensaje = "La zapatilla no existe"
+    return render(request, "ConsultarZapatillaNF.html",  {"mensaje":mensaje,"t32":t32,"t31":t31,"t30":t30,"t29":t29,"t28":t28,"t27":t27,"t26":t26,"t25":t25,"t24":t24,"t23":t23,"t22":t22})
+def ConsultarZapatillaAL(request):  
+    mensaje = ""
+    t43 = ""
+    t42 = ""
+    t41 = ""
+    t40 = ""
+    t39 = ""
+    t38 = ""
+    t37 = ""
+    t36 = ""
+    t35 = ""
+    t34 = ""
+    t33 = ""
+    if request.method == "POST":
+        estilo = request.POST['estiloZapatillaAL']
+        if len(estilo) !=0:            
+            u = Zapatilla_a_linea.objects.filter(estilo=estilo)   
+            if len(u) == 1:
+                datos = u.get()
+                t43 = datos.talla_43
+                t42 = datos.talla_42
+                t41 = datos.talla_41
+                t40 = datos.talla_40
+                t39 = datos.talla_39
+                t38 = datos.talla_38
+                t37 = datos.talla_37
+                t36 = datos.talla_36
+                t35 = datos.talla_35
+                t34 = datos.talla_34
+                t33 = datos.talla_33
+            else:
+                mensaje = "La zapatilla no existe"
+    return render(request, "ConsultarZapatillaAL.html",  {"mensaje":mensaje, "t43_":t43,"t42_":t42,"t41_":t41,"t40_":t40,"t39_":t39,"t38_":t38,"t37_":t37,"t36_":t36,"t35_":t35,"t34_":t34,"t33_":t33})
+def ConsultarZapatillaNL(request):  
+    mensaje = ""
+    t32 = ""
+    t31 = ""
+    t30 = ""
+    t29 = ""
+    t28 = ""
+    t27 = ""
+    t26 = ""
+    t25 = ""
+    t24 = ""
+    t23 = ""
+    t22 = ""
+    if request.method == "POST":
+        estilo = request.POST['estiloZapatillaNL']
+        if len(estilo) !=0:            
+            u = Zapatilla_n_linea.objects.filter(estilo=estilo)   
+            if len(u) == 1:
+                datos = u.get()
+                t32 = datos.talla_32
+                t31 = datos.talla_31
+                t30 = datos.talla_30
+                t29 = datos.talla_29
+                t28 = datos.talla_28
+                t27 = datos.talla_27
+                t26 = datos.talla_26
+                t25 = datos.talla_25
+                t24 = datos.talla_24
+                t23 = datos.talla_23
+                t22 = datos.talla_22
+            else:
+                mensaje = "La zapatilla no existe"
+    return render(request, "ConsultarZapatillaNL.html",  {"mensaje":mensaje,"t32_":t32,"t31_":t31,"t30_":t30,"t29_":t29,"t28_":t28,"t27_":t27,"t26_":t26,"t25_":t25,"t24_":t24,"t23_":t23,"t22_":t22})
+
 def registrarMateriales(request):
     mensaje = ""
     print("hola")
@@ -596,5 +821,3 @@ def registrarMateriales(request):
             i.save()
             mensaje = "guardado exitosamente"
     return render(request, "registroMateriales.html", {"mensaje":mensaje})
-
-    

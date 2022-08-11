@@ -49,34 +49,19 @@
             <!-- Nav Item - Gestion usuarios Collapse Menu -->
 
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Gestión de Usuarios</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'CrearUsuario' %}">Crear Usuario</a>
-                        <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
-                        <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
-                    </div>
-                </div>
-            </li>
+        
 
             <!-- Nav Item - Collapse Consultar usuarios -->
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'ConsultarUsuario' %}">
+                <a class="nav-link" href="{% url 'InterfazEmpleado' %}">
                     <i class="fas fa-fw fa-search"></i>
-                    <span>Consultar Usuarios</span>
+                    <span>Menú Principal</span>
                 </a>
             </li>
 
 
-            <hr class="sidebar-divider">
-
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'InterfazAdmin' %}">
+                <a class="nav-link" href="{% url 'InterfazEmpleado' %}">
                     <i class="fas fa-arrow-left"></i>
                     <span>Atras </span></a>
             </li>
@@ -112,7 +97,7 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -277,104 +262,38 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800" style="text-align: center;">Consultar Usuario</h1>
-
-                    <div class="row">
-
-                        <div class="col-lg-6">
-
-                            <!-- Circle Buttons -->
-
-                            <div class="card-header py-3">
-
-                                <h6 class="m-0 font-weight-bold text-primary">Ingrese el correo para consultar:</h6>
-                            </div>
-                            <form action="{% url 'ConsultarUsuario' %}" method="POST" class="user">
-                                {% csrf_token %}
-
-                                <SCript>
-                                    if ('{{mensaje}}'.length != 0)
-                                        alert('{{mensaje}}');
-                                </SCript>
-
-                                <div class="card-body">
-                                    <div class="row">
-                                        <label for="Nombre" class="col-2 col-form-label">Nombre </label>
-                                        <input type="text" class="col form-control form-control-user" id="Nombre" name="nombre_usuario" value="{{nombre}}" readonly>&nbsp;
-                                        <label for="Apellidos" class="col-2 col-form-label">Apellidos</label>
-                                        <input type="text" class="col form-control form-control-user" id="PrimerApellido" name="primerApellido_usuario" value="{{apellido1}}" readonly>&nbsp;
-                                    </div>&nbsp;
-                                    <div class="row">
-                                        <label for="Cedula" class="col-2 col-form-label">Cedula</label>
-                                        <input type="text" class="col form-control form-control-user" id="Cedula" name="cedula" value="{{cedula}}" readonly>&nbsp;
-                                        <label for="exampleRolUser" class="col-2 col-form-label">Rol</label>
-                                        <input type="text" class="col form-control form-control-user" name="rolUser" id="exampleRolUser" value="{{rol}}" readonly>
-                                    </div>&nbsp;
-                                    <div class="row">
-                                        <label for="Direccion" class="col-2 col-form-label">Direccion</label>
-                                        <input type="text" class="col form-control form-control-user" id="Direccion" name="direccion" value="{{direccion}}" readonly>&nbsp;
-                                        <label for="Telefono" class="col-2 col-form-label">Telefono</label>
-                                        <input type="text" class="col form-control form-control-user" name="Telefono" id="telefono" value="{{telefono}}" readonly>
-                                    </div>&nbsp;
-                                    <div class="row">
-                                        <label for="emailUser" class="col-2 col-form-label">Email</label>
-                                        <input type="email" class="col form-control form-control-user" name="emailUser" id="exampleInputEmail" value="{{correo}}" placeholder="Escriba aquí el correo electrónico" required>
-                                    </div>&nbsp;
-                                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Consultar Usuario">
-                                </div>
-                        </div>
-
-                        <div class="col-lg-6">
-
-                            <div class="card shadow mb-4">
-
-                                <img style="width: 100%; position: center;" src="{% static 'img/Consultas.jpg'%}" />
-
-                                <div class="card-body">
-
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
                     <div class="container">
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Lista usuarios</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Lista Ventas</h6>
                             </div>
-                            <form action="{% url 'ConsultarUsuario' %}" method="POST" class="user"></form>
+                            <form action="{% url 'ConsultarVenta' %}" method="POST" class="user"></form>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>CEDULA</th>
-                                                <th>NOMBRES </th>
-                                                <th>APELLIDOS</th>
-                                                <th>TELEFONO</th>
-                                                <th>ROL</th>
-                                                <th>ESTADO</th>
+                                                <th>ZAPATILLAS ADULTO</th>
+                                                <th>ZAPATILLAS NIÑO </th>
+                                                <th>TALLA</th>
+                                                <th>PRECIO VENTA</th>
+                                                <th>FECHA VENTA</th>
                                             </tr>
                                         </thead>
                                     
                                         <tbody>
-                                        
+                                        {% for venta in ventas%}
                                             <tr>
-                                                <td>{{cedula}}</td>
-                                                <td>{{nombre}}</td>
-                                                <td>{{apellido1}}</td>
-                                                <td>{{telefono}}</td>
-                                                <td>{{rol}}</td>
-                                                <td>{{estado}}</td>
+                                                <td>{{venta.id_zapatillas_a}}</td>
+                                                <td>{{venta.id_zapatillas_n}}</td>
+                                                <td>{{venta.talla}}</td>
+                                                <td>{{venta.precio_venta}}</td>
+                                                <td>{{venta.fecha_venta}}</td>
                                                 
                                             </tr>
-                                            
+                                        {% endfor %}
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -384,7 +303,7 @@
 
                 </div>
                 <!-- /.container-fluid -->
-
+        </div>
             </div>
             <!-- End of Main Content -->
 

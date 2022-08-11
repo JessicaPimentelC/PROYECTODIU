@@ -10395,7 +10395,10 @@ a:focus {
 .sidebar #sidebarToggle:focus {
   outline: none;
 }
-
+.foco:focus{
+  background: blue;
+  color: blue;
+}
 .sidebar.toggled {
   width: 0 !important;
   overflow: hidden;

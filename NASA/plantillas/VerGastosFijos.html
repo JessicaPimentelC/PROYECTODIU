@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Crear Usuario</title>
+    <title>Consultar gastos</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -30,76 +30,47 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'InterfazAdmin' %}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'InterfazEmpleado' %}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gestión Usuarios<sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Punto fisico<sup></sup></div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
 
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+
             <!-- Nav Item - Gestion usuarios Collapse Menu -->
 
-
             <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="collapseCliente" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Gestión de Usuarios</span>
+                    <span>Punto fisico</span>
                 </a>
-                <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        
-                        <a class="collapse-item " href="{% url 'CrearUsuario' %}">Crear Usuario</a>
+                        <h6 class="collapse-header">Opciones:</h6>  
                         <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
-                        <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
                         <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
 
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseTwo1" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto fisico</span>
-                </a>
-                <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAF' %}">Registrar zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNF' %}">Registrar zapatilla niño</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoAF' %}">Registrar pedido adulto</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoNF' %}">Registrar pedido niño</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseTwo2" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto en linea</span>
-                </a>
-                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAL' %}">Registrar zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNL' %}">Registrar zapatilla niño</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoAL' %}">Registrar pedido adulto</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoNL' %}">Registrar pedido niño</a>
-                    </div>
-                </div>
-            </li>
+        
 
             <!-- Nav Item - Collapse Consultar usuarios -->
-            
-            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'InterfazAdmin' %}">
+                    <i class="fas fa-fw fa-search"></i>
+                    <span>Menú Principal</span>
+                </a>
+            </li>
 
 
             <li class="nav-item">
@@ -108,10 +79,11 @@
                     <span>Atrás </span></a>
             </li>
 
-
-
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider">
+
+
+
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -297,98 +269,51 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
 
                 </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                    <div class="container">
 
-
-
-                    <div class="row">
-
-                        <div class="col-lg-6">
-
-                            <!-- Circle Buttons -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Llenar el siguiente formulario para usuarios:</h6>
-                                </div>
-
-                                <!-- Brand Buttons -->
-                                <div class="card shadow mb-4"> </div>
-
-                                <form action="{% url 'CrearUsuario' %}" method="POST" class="user">
-                                    {% csrf_token %}
-
-                                    <SCript>
-                                        if ('{{mensaje}}'.length != 0)
-                                            alert('{{mensaje}}');
-                                    </SCript>
-
-                                    <div class="card-body">
-
-
-                                        <div class=" col-sm-4"></div>
-                                        <input type="text" class="form-control form-control-user" id="Nombre" name="nombre" placeholder="Nombre" required>&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="Apellidos" name="apellidos" placeholder="Apellidos">&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="Cedula" name="cedula" placeholder="Cedula" required>&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="Direccion" name="direccion" placeholder="Direccion">&nbsp;
-                                        <input type="text" class="form-control form-control-user" id="Telefono" name="telefono" placeholder="Telefono" required maxlength="10">&nbsp;
-
-                                        <div class="form-group row">
-
-                                            <div class="col-sm-4">
-                                                <select class="form-control-select" name="tipo_usuario" id="tipo_usuario" required>
-                                                        <option value="" selected>-Seleccione Rol-</option>
-                                                        <option value="Admin">Admin</option>
-                                                        <option value="Empleado">Empleado</option>
-                                                       
-                                                    </select>
-
-                                            </div>
-                                            <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Correo electrónico" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                                <input type="password" class="form-control form-control-user" id="contrasena" name="contrasena" placeholder="Contraseña" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-
-                                            <div class="col-sm-12 mb-sm-0 ">
-                                                <select class="form-control-select form-control height:30%" name="estado" id="estado" required>
-                                                        <option value="" selected>-Seleccione Estado-</option>
-                                                        <option value="Activo">Activo</option>
-                                                        <option value="Inactivo">Inactivo</option>
-                                                       
-                                                    </select>
-                                            </div>
-                                            
-                                        </div>
-                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Registrar Usuario">
-
-                                    </div>
-                                </form>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Lista Gastos</h6>
                             </div>
+                            <form action="{% url 'verGastosFijos' %}" method="POST" class="user"></form>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Descripcion </th>
+                                                <th>Costo</th>
 
+
+                                            </tr>
+                                        </thead>
+                                    
+                                        <tbody>
+                                        {% for gasto in gastos%}
+                                            <tr>
+                                                <td>{{gasto.id_gasto_variable_l}}</td>
+                                                <td>{{gasto.descripcion}}</td>
+                                                <td>{{gasto.costo}}</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="col-lg-6">
-                            <img style="width: 100%;position: center;" src="{% static 'img/CrearCliente.jpg'%}" />
-                        </div>
-
                     </div>
 
                 </div>
                 <!-- /.container-fluid -->
-
+        </div>
             </div>
             <!-- End of Main Content -->
 
@@ -396,7 +321,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Universidad del valle 2022</span>
+                        <span>Copyright &copy; Universidad del Valle 2022</span>
                     </div>
                 </div>
             </footer>
@@ -418,7 +343,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Desea salir?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Desea salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
