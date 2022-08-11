@@ -1,4 +1,5 @@
 from typing import Optional
+from typing_extensions import Required
 from django.db import models
 
 class Usuario(models.Model):
@@ -8,18 +9,18 @@ class Usuario(models.Model):
     apellidos = models.CharField(max_length=50)
     direccion = models.CharField(max_length=50)
     telefono = models.CharField(max_length=50)
-    correo = models.CharField(max_length=50)
+    correo = models.EmailField(max_length=50)
     tipo_usuario = models.CharField(max_length=50)
     contrasena = models.CharField(max_length=50)
     estado = models.CharField(max_length=50)
 
 class Ventas_almacen(models.Model):
     id_ventas_a = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
-    id_zapatillas_a = models.IntegerField()
-    id_zapatillas_n = models.IntegerField()
+    id_zapatillas_a = models.IntegerField(null=True)
+    id_zapatillas_n = models.IntegerField(null=True)
     talla = models.IntegerField()
     precio_venta = models.IntegerField()
-    fecha_venta = models.DateField(max_length=50)
+    fecha_venta = models.DateField()
     
 class Ventas_linea(models.Model):
     id_ventas_l = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
@@ -27,7 +28,8 @@ class Ventas_linea(models.Model):
     id_zapatillas_n = models.IntegerField()
     talla = models.IntegerField()
     precio_venta = models.IntegerField()
-    fecha_venta = models.DateField(max_length=50)
+    fecha_venta = models.DateField()
+
 
 class Zapatillas_a_almacen(models.Model):
     id_zap_a_almacen = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
@@ -96,6 +98,7 @@ class Zapatillas_n_linea(models.Model):
     talla_24 = models.IntegerField()
     talla_23 = models.IntegerField()
     talla_22 = models.IntegerField()
+
 class Gastos_Variable_almacen(models.Model):
     id_gasto_variable_a = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     costo = models.IntegerField()

@@ -34,7 +34,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gestión Usuarios <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Administrador <sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -62,8 +62,8 @@
                         <h6 class="collapse-header">Opciones:</h6>  
                         <a class="collapse-item" href="{% url 'CrearUsuario' %}">Crear Usuario</a>
                         <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
-                        <a class="collapse-item" href="{% url 'verUsuarios' %}">Ver Usuarios</a>
                         <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
+                        <a class="collapse-item" href="{% url 'verUsuarios' %}">Ver Usuarios</a>
 
                     </div>
                 </div>
@@ -86,6 +86,12 @@
                         <a class="collapse-item" href="{% url 'ModificarGastosFijos' %}">Editar gastos fijos</a>
                         <a class="collapse-item" href="{% url 'ConsultarZapatillaAF' %}">Buscar zapatilla adulto</a>
                         <a class="collapse-item" href="{% url 'ConsultarZapatillaNF' %}">Buscar zapatilla niño</a>
+                        <a class="collapse-item" href="{% url 'CrearVenta' %}">Registrar Venta</a>
+                        <a class="collapse-item" href="{% url 'ModificarVenta' %}">Modificar Venta</a>
+                        <a class="collapse-item" href="{% url 'ConsultarVenta' %}">Ver Ventas</a>
+                        <a class="collapse-item" href="{% url 'ConsultarGastoVA' %}">Consultar gastos variables</a>
+
+
                     </div>
                 </div>
             </li>
@@ -104,6 +110,10 @@
                         <a class="collapse-item" href="{% url 'ingresarGastosVariablesL' %}">Registrar gastos variables</a>
                         <a class="collapse-item" href="{% url 'ConsultarZapatillaAL' %}">Buscar zapatilla adulto</a>
                         <a class="collapse-item" href="{% url 'ConsultarZapatillaNL' %}">Buscar zapatilla niño</a>
+                        <a class="collapse-item" href="{% url 'CrearVentaEL' %}">Registrar Venta</a>
+                        <a class="collapse-item" href="{% url 'ModificarVentaEL' %}">Modificar Venta</a>
+                        <a class="collapse-item" href="{% url 'ConsultarVentaEL' %}">Ver Ventas</a>
+                        <a class="collapse-item" href="{% url 'ConsultarGastoVL' %}">Consultar gastos variables</a>
                     </div>
                 </div>
             </li>
@@ -178,11 +188,7 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
+                            
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
@@ -227,11 +233,7 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
+                            
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
@@ -291,15 +293,10 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> PERFIL
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>CONFIGURACION
-                                </a>
+                                
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CERRAR SESION
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CERRAR SESIÓN
                                 </a>
                             </div>
                         </li>
@@ -314,7 +311,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"></h1>
-                    <h1 style="text-align: center;">Bienvenido</h1>
+                    <h1 style="text-align: center;">Bienvenido: Gestión Administrador</h1>
 
                     <div class="col-lg-6">
 
@@ -323,7 +320,7 @@
 
 
                             <div class="sidebar-brand-icon">
-                                <img style="width: 1000px; position: center;" src="{% static 'img/FONDO.png'%}" />
+                                <img style="width: 1200px; position: center;" src="{% static 'img/FONDO.png'%}" />
 
                             </div>
 

@@ -42,7 +42,6 @@
 
             <!-- Nav Item - Dashboard -->
 
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -52,20 +51,19 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Gestión de Usuarios</span>
+                    <span >Gestión de Usuarios</span>
                 </a>
                 <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones:</h6>
                         
-                        <a class="collapse-item " href="{% url 'CrearUsuario' %}">Crear Usuario</a>
                         <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
-                        <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
                         <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
 
                     </div>
                 </div>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="collapseTwo1" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
@@ -99,9 +97,7 @@
 
             <!-- Nav Item - Collapse Consultar usuarios -->
             
-            <hr class="sidebar-divider">
-
-
+         
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'InterfazAdmin' %}">
                     <i class="fas fa-arrow-left"></i>
@@ -172,11 +168,7 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
+                            
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
@@ -221,11 +213,7 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
+                            
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
@@ -285,15 +273,10 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> PERFIL
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>CONFIGURACION
-                                </a>
+                                
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CERRAR SESION
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CERRAR SESIÓN
                                 </a>
                             </div>
                         </li>
@@ -305,9 +288,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-
-
+                <h1 class="h3 mb-4 text-gray-800" style="text-align: center;">Crear usuario</h1>
                     <div class="row">
 
                         <div class="col-lg-6">
@@ -343,7 +324,7 @@
 
                                             <div class="col-sm-4">
                                                 <select class="form-control-select" name="tipo_usuario" id="tipo_usuario" required>
-                                                        <option value="" selected>-Seleccione Rol-</option>
+                                                        <option value="" selected>Estado</option>
                                                         <option value="Admin">Admin</option>
                                                         <option value="Empleado">Empleado</option>
                                                        

@@ -1,4 +1,9 @@
+from cgi import print_environ
+from cmath import cos, pi
+from email.policy import default
+from typing_extensions import Required
 from django.db.models.query import EmptyQuerySet
+from django.forms import EmailField
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
@@ -20,6 +25,8 @@ Gastos_Variable_almacen = models.Gastos_Variable_almacen
 Gastos_Fijos_Almacen = models.Gastos_Fijos_Almacen
 Gastos_Variable_linea = models.Gastos_Variable_linea
 Ventas_linea = models.Ventas_linea
+GastosVariable_Almacen = models.Gastos_Variable_almacen
+GastosVariable_Linea = models.Gastos_Variable_linea
 
 def index(request):
     # Post enviado desde formulario en login
@@ -28,7 +35,6 @@ def index(request):
     email = request.POST['user_email']
     password = request.POST['user_password']
     
-
     usuario_db = Usuario.objects.filter(correo = email)
     # usuario con correo igual
     print(usuario_db)
@@ -143,33 +149,158 @@ def verUsuario(request):
 
 def crearVenta(request):
     mensaje = ""
+
     if request.method == "POST":
+        print("primer if")
         zapatillas_a_alm = request.POST['id_zapatillas_a']
         zapatillas_n_alm = request.POST['id_zapatillas_n']
         talla = request.POST['talla']
         precio_venta = request.POST['precio_venta']
         fecha_venta = request.POST['fecha_venta']
 
-        if len(zapatillas_a_alm) !=0:
+        if (len(zapatillas_a_alm) !=0):
             u = Ventas_almacen(id_zapatillas_a = zapatillas_a_alm, id_zapatillas_n=zapatillas_n_alm,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
             u.save()
+            restaInventarioZap_aA(request,talla,zapatillas_a_alm)
+            restaInventarioZap_nA(request,talla,zapatillas_n_alm)
             mensaje = "guardado exitosamente"
     return render(request, "CrearVenta.html", {"mensaje":mensaje})
 
 def crearVentaEL(request):
     mensaje = ""
     if request.method == "POST":
-        zapatillas_a_alm = request.POST['id_zapatillas_a']
-        zapatillas_n_alm = request.POST['id_zapatillas_n']
+        zapatillas_a_lin = request.POST['id_zapatillas_a']
+        zapatillas_n_lin = request.POST['id_zapatillas_n']
         talla = request.POST['talla']
         precio_venta = request.POST['precio_venta']
         fecha_venta = request.POST['fecha_venta']
 
-        if len(zapatillas_a_alm) !=0:
-            u = Ventas_linea(id_zapatillas_a = zapatillas_a_alm, id_zapatillas_n=zapatillas_n_alm,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
+        if len(zapatillas_a_lin) !=0:
+            u = Ventas_linea(id_zapatillas_a = zapatillas_a_lin, id_zapatillas_n=zapatillas_n_lin,talla=talla, precio_venta=precio_venta, fecha_venta = fecha_venta)    
             u.save()
+            restaInventarioZap_nL(request,talla,zapatillas_n_lin)
             mensaje = "guardado exitosamente"
     return render(request, "CrearVentaEL.html", {"mensaje":mensaje})
+
+def restaInventarioZap_aA(request,tallap,codZapA):
+
+    dismin = Zapatilla_a_almacen.objects.get(id_zap_a_almacen=codZapA)
+    if tallap == "33":
+        dismin.talla_33 -= 1
+    elif tallap == "34":
+        dismin.talla_34 -= 1
+    elif tallap == "35":
+        dismin.talla_35 -= 1
+    elif tallap == "36":
+        dismin.talla_36 -= 1
+    elif tallap == "37":
+        dismin.talla_37 -= 1
+    elif tallap == "38":
+        dismin.talla_38 -= 1
+    elif tallap == "39":
+        dismin.talla_39 -= 1
+    elif tallap == "40":
+        dismin.talla_40 -= 1
+    elif tallap == "41":
+        dismin.talla_41 -= 1
+    elif tallap == "42":
+        dismin.talla_42 -= 1
+    elif tallap == "43":
+        dismin.talla_43 -= 1                        
+    dismin.save()
+                                
+    return render(request, "CrearVenta.html",{dismin:dismin})
+
+def restaInventarioZap_nA(request,tallap,codZapN):
+
+    dismin = Zapatilla_n_almacen.objects.get(id_zap_n_almacen=codZapN)
+    if tallap == "32":
+        dismin.talla_32 -= 1
+    elif tallap == "31":
+        dismin.talla_31 -= 1
+    elif tallap == "30":
+        dismin.talla_30 -= 1
+    elif tallap == "29":
+        dismin.talla_29 -= 1
+    elif tallap == "28":
+        dismin.talla_28 -= 1
+    elif tallap == "27":
+        dismin.talla_27 -= 1
+    elif tallap == "26":
+        dismin.talla_26 -= 1
+    elif tallap == "25":
+        dismin.talla_25 -= 1
+    elif tallap == "24":
+        dismin.talla_24 -= 1
+    elif tallap == "23":
+        dismin.talla_23 -= 1
+    elif tallap == "22":
+        dismin.talla_22 -= 1                        
+    dismin.save()
+                                
+    return render(request, "CrearVenta.html",{dismin:dismin})
+
+def restaInventarioZap_aL(request,tallap,codZapA):
+    
+    dismin = Zapatilla_a_linea.objects.get(id_zap_a_linea=codZapA)
+    if tallap == "33":
+        dismin.talla_33 -= 1
+    elif tallap == "34":
+        dismin.talla_34 -= 1
+    elif tallap == "35":
+        dismin.talla_35 -= 1
+    elif tallap == "36":
+        dismin.talla_36 -= 1
+    elif tallap == "37":
+        dismin.talla_37 -= 1
+    elif tallap == "38":
+        dismin.talla_38 -= 1
+    elif tallap == "39":
+        dismin.talla_39 -= 1
+    elif tallap == "40":
+        dismin.talla_40 -= 1
+    elif tallap == "41":
+        dismin.talla_41 -= 1
+    elif tallap == "42":
+        dismin.talla_42 -= 1
+    elif tallap == "43":
+        dismin.talla_43 -= 1                        
+    dismin.save()
+                                
+    return render(request, "CrearVenta.html",{dismin:dismin})
+
+def restaInventarioZap_nL(request,tallap,codZapN):
+
+    dismin = Zapatilla_n_linea.objects.get(id_zap_n_linea=codZapN)
+    if tallap == "32":
+        dismin.talla_32 -= 1
+    elif tallap == "31":
+        dismin.talla_31 -= 1
+    elif tallap == "30":
+        dismin.talla_30 -= 1
+    elif tallap == "29":
+        dismin.talla_29 -= 1
+    elif tallap == "28":
+        dismin.talla_28 -= 1
+    elif tallap == "27":
+        dismin.talla_27 -= 1
+    elif tallap == "26":
+        dismin.talla_26 -= 1
+    elif tallap == "25":
+        dismin.talla_25 -= 1
+    elif tallap == "24":
+        dismin.talla_24 -= 1
+    elif tallap == "23":
+        dismin.talla_23 -= 1
+    elif tallap == "22":
+        dismin.talla_22 -= 1                        
+    dismin.save()
+                                
+    return render(request, "CrearVenta.html",{dismin:dismin})
+def eliminarZapatilla_a_A(request, zapatillas_a_alm):
+    proveedor = Ventas_almacen.objects.filter(id_zapatillas_a=zapatillas_a_alm)
+    proveedor.delete()
+    return render(request, "CrearVenta.html",{proveedor:proveedor})
 
 def consultarVenta(request):
     mensaje = ""
@@ -267,12 +398,116 @@ def modificarUsuario(request):
             u.save()
             mensaje = "Se modificó exitosamente"
             boton = "Buscar usuario a modificar"
+            estado="--Seleccione Estado--"
             rol="-Seleccione Rol-"
-            return render(request, "ModificarUsuario.html", {"mensaje":mensaje, "boton": boton, "rol":rol, "estadoEmail": 'required'})        
+            return render(request, "ModificarUsuario.html", {"mensaje":mensaje, "boton": boton, "estado":estado,"rol":rol, "estadoEmail": 'required'})        
     else:
         boton = "Buscar usuario a modificar"
         rol="--Seleccione Rol--"
-        return render(request, "ModificarUsuario.html", {"boton":boton,"rol":rol, "estadoEmail": 'required'})
+        estado="--Seleccione Estado--"
+        return render(request, "ModificarUsuario.html", {"boton":boton,"rol":rol,"estado":estado, "estadoEmail": 'required'})
+
+def modificarVenta(request):
+    boton = ""
+    mensaje = ""
+    zapatillas_a_alm = ""
+    zapatillas_n_alm = ""
+    talla = ""
+    precio_venta = ""
+    fecha_venta = ""
+    if request.method == "POST" and request.POST['boton'] == "Buscar venta a modificar":
+        fecha_venta = request.POST['fecha_venta']
+        if len(fecha_venta) !=0:            
+            u = Ventas_almacen.objects.filter(fecha_venta=fecha_venta)   
+            if len(u) == 1:
+                datos = u.get()
+                zapatillas_a_alm = datos.id_zapatillas_a
+                zapatillas_n_alm = datos.id_zapatillas_n
+                talla = datos.talla
+                precio_venta = datos.precio_venta
+                fecha_venta = datos.fecha_venta
+                
+                boton = "Confirmar Modificación"
+                return render(request, "ModificarVenta.html", {"boton":boton, "zapatillas_a_alm": zapatillas_a_alm,"zapatillas_n_alm":zapatillas_n_alm,"talla":talla, "precio_venta":precio_venta,"fecha_venta": 'readonly'})
+            if len(u) != 1:
+                mensaje = "No se encontró"
+                boton = "Buscar venta a modificar"
+                return render(request, "ModificarVenta.html", {"boton":boton, "zapatillas_a_alm": zapatillas_a_alm,"zapatillas_n_alm":zapatillas_n_alm,"talla":talla, "precio_venta":precio_venta,"fecha_venta": fecha_venta})
+        else:
+            mensaje = "No se encontró el usuario"
+            boton = "Buscar venta a modificar"
+            return render(request, "ModificarVenta.html", {"boton":boton, "zapatillas_a_alm": zapatillas_a_alm,"zapatillas_n_alm":zapatillas_n_alm,"talla":talla, "precio_venta":precio_venta,"fecha_venta": fecha_venta})
+
+    if request.method == "POST" and request.POST['boton'] == "Confirmar Modificación":
+        fecha2 = request.POST['fecha_venta']
+        if len(request.POST['id_zapatillas_a'])>0 and len(request.POST['id_zapatillas_n'])>0 and len(request.POST['talla'])>0 and len(request.POST['precio_venta'])>0 and len(request.POST['fecha_venta'])>0:
+            u = Ventas_almacen.objects.get(fecha_venta=fecha2)   
+            u.zapatillas_a_alm = request.POST['id_zapatillas_a']
+            u.zapatillas_n_alm = request.POST['id_zapatillas_n']
+            u.talla = request.POST['talla']
+            u.precio_venta = request.POST['precio_venta']
+            u.fecha_venta = request.POST['fecha_venta']
+            
+            if len(request.POST['rolUser']) != 0:
+                u.tipo_usuario = request.POST['rolUser']
+            u.save()
+            mensaje = "Se modificó exitosamente"
+            boton = "Buscar venta a modificar"
+            return render(request, "ModificarVenta.html", {"mensaje":mensaje, "boton": boton, "fecha_venta": 'required'})        
+    else:
+        boton = "Buscar venta a modificar"
+        return render(request, "ModificarVenta.html", {"boton":boton,"fecha_venta": fecha_venta})
+
+def modificarVentaEL(request):
+    boton = ""
+    mensaje = ""
+    zapatillas_a_alm = ""
+    zapatillas_n_alm = ""
+    talla = ""
+    precio_venta = ""
+    fecha_venta = ""
+    if request.method == "POST" and request.POST['boton'] == "Buscar venta a modificar":
+        fecha_venta = request.POST['fecha_venta']
+        if len(fecha_venta) !=0:            
+            u = Ventas_linea.objects.filter(fecha_venta=fecha_venta)   
+            if len(u) == 1:
+                datos = u.get()
+                zapatillas_a_alm = datos.id_zapatillas_a
+                zapatillas_n_alm = datos.id_zapatillas_n
+                talla = datos.talla
+                precio_venta = datos.precio_venta
+                fecha_venta = datos.fecha_venta
+                
+                boton = "Confirmar Modificación"
+                return render(request, "ModificarVentaEL.html", {"boton":boton, "zapatillas_a_alm": zapatillas_a_alm,"zapatillas_n_alm":zapatillas_n_alm,"talla":talla, "precio_venta":precio_venta,"fecha_venta": 'readonly'})
+            if len(u) != 1:
+                mensaje = "No se encontró"
+                boton = "Buscar venta a modificar"
+                return render(request, "ModificarVentaEL.html", {"boton":boton, "zapatillas_a_alm": zapatillas_a_alm,"zapatillas_n_alm":zapatillas_n_alm,"talla":talla, "precio_venta":precio_venta,"fecha_venta": fecha_venta})
+        else:
+            mensaje = "No se encontró el usuario"
+            boton = "Buscar venta a modificar"
+            return render(request, "ModificarVentaEL.html", {"boton":boton, "zapatillas_a_alm": zapatillas_a_alm,"zapatillas_n_alm":zapatillas_n_alm,"talla":talla, "precio_venta":precio_venta,"fecha_venta": fecha_venta})
+
+    if request.method == "POST" and request.POST['boton'] == "Confirmar Modificación":
+        fecha2 = request.POST['fecha_venta']
+        if len(request.POST['id_zapatillas_a'])>0 and len(request.POST['id_zapatillas_n'])>0 and len(request.POST['talla'])>0 and len(request.POST['precio_venta'])>0 and len(request.POST['fecha_venta'])>0:
+            u = Ventas_linea.objects.get(fecha_venta=fecha2)   
+            u.zapatillas_a_alm = request.POST['id_zapatillas_a']
+            u.zapatillas_n_alm = request.POST['id_zapatillas_n']
+            u.talla = request.POST['talla']
+            u.precio_venta = request.POST['precio_venta']
+            u.fecha_venta = request.POST['fecha_venta']
+            
+            if len(request.POST['rolUser']) != 0:
+                u.tipo_usuario = request.POST['rolUser']
+            u.save()
+            mensaje = "Se modificó exitosamente"
+            boton = "Buscar venta a modificar"
+            return render(request, "ModificarVentaEL.html", {"mensaje":mensaje, "boton": boton, "fecha_venta": 'required'})        
+    else:
+        boton = "Buscar venta a modificar"
+        return render(request, "ModificarVentaEL.html", {"boton":boton,"fecha_venta": fecha_venta})
 
 def eliminarUsuario(request):
     boton = ""
@@ -349,7 +584,47 @@ def consultarUsuario(request):
                 estado =datos.estado
             else:
                 mensaje = "El usuario no existe"
-    return render(request, "ConsultarUsuario.html",{"mensaje":mensaje, "nombre": nombre, "apellido1": apellido1, "cedula":cedula,  "rol":rol,"direccion":direccion, "telefono":telefono, "correo": correo, "estado":estado})
+    return render(request, "ConsultarUsuario.html",{"mensaje":mensaje, "nombre": nombre, "apellido1": apellido1, "cedula":cedula, "rol":rol, "direccion":direccion, "telefono":telefono, "correo": correo, "estado":estado})
+    
+def consultarGastoVA(request):
+    mensaje = ""
+    costo= ""
+    fecha =""
+    descripcion = ""
+    
+    if request.method == "POST":
+        fecha = request.POST['fecha']
+        if len(fecha) !=0:            
+            u = GastosVariable_Almacen.objects.filter(fecha=fecha)   
+            if len(u) == 1:
+                datos = u.get()
+                costo = datos.costo
+                fecha = datos.fecha
+                descripcion = datos.descripcion
+                
+            else:
+                mensaje = "El gasto no existe"
+    return render(request, "ConsultarGastoVA.html",{"mensaje":mensaje, "costo": costo, "fecha": fecha, "descripcion":descripcion})
+
+def consultarGastoVL(request):
+    mensaje = ""
+    costo= ""
+    fecha =""
+    descripcion = ""
+    
+    if request.method == "POST":
+        fecha = request.POST['fecha']
+        if len(fecha) !=0:            
+            u = GastosVariable_Linea.objects.filter(fecha=fecha)   
+            if len(u) == 1:
+                datos = u.get()
+                costo = datos.costo
+                fecha = datos.fecha
+                descripcion = datos.descripcion
+                
+            else:
+                mensaje = "El gasto no existe"
+    return render(request, "ConsultarGastoVA.html",{"mensaje":mensaje, "costo": costo, "fecha": fecha, "descripcion":descripcion})
 
 def consultarClientes(request):
     return render(request, "ConsultarClientes.html")
@@ -626,6 +901,11 @@ def listarVenta(request):
     ventas = Ventas_almacen.objects.all()
     contexto = {"ventas":ventas}
     return render(request, "ConsultarVenta.html", contexto)
+    
+def listarVentaEL(request):
+    ventas = Ventas_linea.objects.all()
+    contexto = {"ventas":ventas}
+    return render(request, "ConsultarVentaEL.html", contexto)
 
 def listarUsuarios(request):
     usuarios = Usuario.objects.all()
