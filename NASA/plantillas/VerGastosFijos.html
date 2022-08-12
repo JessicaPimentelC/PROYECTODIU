@@ -48,33 +48,11 @@
 
             <!-- Nav Item - Gestion usuarios Collapse Menu -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseCliente" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto fisico</span>
-                </a>
-                <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>  
-                        <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
-                        <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
-
-                    </div>
-                </div>
-            </li>
-        
-
-            <!-- Nav Item - Collapse Consultar usuarios -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'InterfazAdmin' %}">
-                    <i class="fas fa-fw fa-search"></i>
-                    <span>Menú Principal</span>
-                </a>
-            </li>
+           
 
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'InterfazAdmin' %}">
+                <a class="nav-link" href="{% url 'GestionGastos' %}">
                     <i class="fas fa-arrow-left"></i>
                     <span>Atrás </span></a>
             </li>

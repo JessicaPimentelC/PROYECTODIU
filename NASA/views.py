@@ -648,7 +648,7 @@ def consultarGastoVL(request):
                 
             else:
                 mensaje = "El gasto no existe"
-    return render(request, "ConsultarGastoVA.html",{"mensaje":mensaje, "costo": costo, "fecha": fecha, "descripcion":descripcion})
+    return render(request, "ConsultarGastoVL.html",{"mensaje":mensaje, "costo": costo, "fecha": fecha, "descripcion":descripcion})
 
 def consultarClientes(request):
     return render(request, "ConsultarClientes.html")
@@ -939,6 +939,22 @@ def verGastosFijos(request):
     gastos = Gastos_Fijos_Almacen.objects.all()
     contexto = {"gastos": gastos}
     return render(request, "VerGastosFijos.html", contexto)
+def verInventarioAF(request):
+    inventario = Zapatilla_a_almacen.objects.all()
+    contexto = {"inventario": inventario}
+    return render(request, "VerInventarioAF.html", contexto)
+def verInventarioNF(request):
+    inventario = Zapatilla_n_almacen.objects.all()
+    contexto = {"inventario": inventario}
+    return render(request, "VerInventarioNF.html", contexto)
+def verInventarioAL(request):
+    inventario = Zapatilla_a_linea.objects.all()
+    contexto = {"inventario": inventario}
+    return render(request, "VerInventarioAL.html", contexto)
+def verInventarioNL(request):
+    inventario = Zapatilla_n_linea.objects.all()
+    contexto = {"inventario": inventario}
+    return render(request, "VerInventarioNL.html", contexto)
 def ModificarGastosFijos(request):
     boton = ""
     mensaje = ""
@@ -1110,6 +1126,11 @@ def ConsultarZapatillaNL(request):
             else:
                 mensaje = "La zapatilla no existe"
     return render(request, "ConsultarZapatillaNL.html",  {"mensaje":mensaje,"t32_":t32,"t31_":t31,"t30_":t30,"t29_":t29,"t28_":t28,"t27_":t27,"t26_":t26,"t25_":t25,"t24_":t24,"t23_":t23,"t22_":t22})
+
+def listarVentaPorMesF(request):
+    ventas = Ventas_almacen.objects.filter(fecha_venta__range=["2020-12-01", "2022-12-31"])
+    contexto = {"ventas":ventas}
+    return render(request, "ConsultarVentasPorMesF.html",contexto)
 
 def registrarMateriales(request):
     mensaje = ""
