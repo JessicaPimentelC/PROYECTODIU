@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Registrar una zapatilla</title>
+    <title>ADMINISTRADOR</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -34,75 +34,57 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Punto en linea<sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Administrador <sup></sup></div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Menú
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
             <!-- Nav Item - Gestion usuarios Collapse Menu -->
 
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="collapseCliente" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Gestión de gastos</span>
+                </a>
+                <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>  
+                        <a class="collapse-item" href="{% url 'ingresarGastosVariablesF' %}">Registrar gastos variables</a>
+                        <a class="collapse-item" href="{% url 'ingresarGastosFijosF' %}">Registrar gastos fijos</a>
+                        <a class="collapse-item" href="{% url 'verGastosFijos' %}">Ver gastos fijos</a>
+                        <a class="collapse-item" href="{% url 'ModificarGastosFijos' %}">Editar gastos fijos</a>
+                        <a class="collapse-item" href="{% url 'ConsultarGastoVA' %}">Consultar gastos variables</a>
+                    </div>
+                </div>
+            </li>
            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto fisico</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAF' %}">Registrar zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNF' %}">Registrar zapatilla niño</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoAF' %}">Registrar pedido adulto</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoNF' %}">Registrar pedido niño</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseTwo2" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto en linea</span>
-                </a>
-                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAL' %}">Registrar zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNL' %}">Registrar zapatilla niño</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoAL' %}">Registrar pedido adulto</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoNL' %}">Registrar pedido niño</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Collapse Consultar usuarios -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'ConsultarUsuario' %}">
-                    <i class="fas fa-fw fa-search"></i>
-                    <span>Consultar Usuarios</span>
-                </a>
-            </li>
-
-
-            <hr class="sidebar-divider">
-
-
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'InterfazAdmin' %}">
                     <i class="fas fa-arrow-left"></i>
-                    <span>Atras </span></a>
+                    <span>Atrás </span></a>
             </li>
+            
+           
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
+            <!-- Heading -->
 
+            <!-- Nav Item - Pages Collapse Menu -->
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -129,7 +111,7 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -150,7 +132,7 @@
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -208,7 +190,7 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                           
+                            
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
@@ -263,7 +245,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{nombre_usuario}}{{primerApellido_usuario}}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle" src="{% static 'img/undraw_profile.svg' %}">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -284,81 +266,22 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800"></h1>
+                    <h1 style="text-align: center;">Bienvenido: Gestión Administrador</h1>
+
+                    <div class="col-lg-6">
+
+                        <div class="card-body">
 
 
-                    <div class="row">
 
-                        <div class="col-lg-6">
+                            <div class="sidebar-brand-icon">
+                                <img style="width: 1200px; position: center;" src="{% static 'img/FONDO.png'%}" />
 
-                            <!-- Circle Buttons -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Llenar el siguiente formulario:</h6>
-                                </div>
-
-                                <!-- Brand Buttons -->
-                                <div class="card shadow mb-4"> </div>
-
-                                <form action="{% url 'RegistrarPedidoNL' %}" method="POST" class="zapatilla">
-                                    {% csrf_token %}
-
-                                    <SCript>
-                                        if ('{{mensaje}}'.length != 0)
-                                            alert('{{mensaje}}');
-                                    </SCript>
-
-                                    <div class="card-body">
-
-
-                                        <div class=" col-sm-4"></div>
-                                        <input type="text" class="form-control form-control-rzp" id="Estilo" name="estilo_p_l_n" placeholder="Estilo" required>&nbsp;
-
-                                        <div class="form-group row">
-
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="32_p_l_n" name="32_p_l_n" placeholder="32">&nbsp;
-                                            </div>
-                                            <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="31_p_l_n" name="31_p_l_n" placeholder="31">&nbsp;
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="30_p_l_n" name="30_p_l_n" placeholder="30">&nbsp;
-                                            </div>
-                                            <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="29_p_l_n" name="29_p_l_n" placeholder="29">&nbsp;
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="28_p_l_n" name="28_p_l_n" placeholder="28">&nbsp;
-                                            </div>
-                                            <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="27_p_l_n" name="27_p_l_n" placeholder="27">&nbsp;
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="26_p_l_n" name="26_p_l_n" placeholder="26">&nbsp;
-                                            </div>
-                                            <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="25_p_l_n" name="25_p_l_n" placeholder="25">&nbsp;
-                                            </div><div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="24_p_l_n" name="24_p_l_n" placeholder="24">&nbsp;
-                                            </div>
-                                            <div class="col-sm-8 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-rzp" id="23_p_l_n" name="23_p_l_n" placeholder="23">&nbsp;
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control form-control-rzp" id="22_p_l_n" name="22_p_l_n" placeholder="22">&nbsp;
-                                            </div>
-                                            
-                                        </div>
-                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Registrar Pedido">
-
-                                    </div>
-                                </form>
                             </div>
 
-                        </div>
 
-                        <div class="col-lg-6">
-                            <img style="width: 100%;position: center;" src="{% static 'img/CrearCliente.jpg'%}" />
                         </div>
 
                     </div>
@@ -373,7 +296,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Universidad del valle 2022</span>
+                        <span>Copyright &copy; Your Website 2022</span>
                     </div>
                 </div>
             </footer>
@@ -395,7 +318,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Desea salir?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Desea salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

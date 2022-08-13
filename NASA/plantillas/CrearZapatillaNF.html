@@ -50,65 +50,6 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseCliente" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Gestión de Usuarios</span>
-                </a>
-                <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>  
-                        <a class="collapse-item" href="{% url 'CrearUsuario' %}">Crear Usuario</a>
-                        <a class="collapse-item" href="{% url 'ModificarUsuario' %}">Modificar Usuario</a>
-                        <a class="collapse-item" href="{% url 'EliminarUsuario' %}">Eliminar Usuario</a>
-                        <a class="collapse-item" href="{% url 'ConsultarUsuario' %}">Consultar Usuario</a>
-
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto fisico</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAF' %}">Registrar zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNF' %}">Registrar zapatilla niño</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoAF' %}">Registrar pedido adulto</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoNF' %}">Registrar pedido niño</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="collapseTwo2" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Punto en linea</span>
-                </a>
-                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones:</h6>
-                        <a class="collapse-item" href="{% url 'crearZapatillaAL' %}">Registrar zapatilla adulto</a>
-                        <a class="collapse-item" href="{% url 'crearZapatillaNL' %}">Registrar zapatilla niño</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoAL' %}">Registrar pedido adulto</a>
-                        <a class="collapse-item" href="{% url 'RegistrarPedidoNL' %}">Registrar pedido niño</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Collapse Consultar usuarios -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'ConsultarUsuario' %}">
-                    <i class="fas fa-fw fa-search"></i>
-                    <span>Consultar Usuarios</span>
-                </a>
-            </li>
-
-
-            <hr class="sidebar-divider">
-
-
-            <li class="nav-item">
                 <a class="nav-link" href="{% url 'InterfazAdmin' %}">
                     <i class="fas fa-arrow-left"></i>
                     <span>Atrás </span></a>
