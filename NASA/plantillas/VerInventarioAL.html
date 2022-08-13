@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Consultar zapatilla</title>
+    <title>Inventario zapatilla niño linea</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -30,19 +30,27 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'InterfazAdmin' %}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'InterfazEmpleado' %}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Punto en linea<sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Punto fisico<sup></sup></div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
 
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
             <!-- Nav Item - Gestion usuarios Collapse Menu -->
+
            
+
+
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'GestionZapatillasEL' %}">
                     <i class="fas fa-arrow-left"></i>
@@ -77,7 +85,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-
+                    
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -104,7 +112,11 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
@@ -149,7 +161,11 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
@@ -209,82 +225,37 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> PERFIL
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>CONFIGURACION
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CERRAR SESION
                                 </a>
                             </div>
                         </li>
-
                     </ul>
 
                 </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800" style="text-align: center;">Consultar zapatilla</h1>
-
-                    <div class="row">
-
-                        <div class="col-lg-6">
-
-                            <!-- Circle Buttons -->
-
-                            <div class="card-header py-3">
-
-                                <h6 class="m-0 font-weight-bold text-primary">Ingrese el estilo para consultar:</h6>
-                            </div>
-                            <form action="{% url 'ConsultarZapatillaAL' %}" method="POST" class="zapatilla">
-                                {% csrf_token %}
-
-                                <SCript>
-                                    if ('{{mensaje}}'.length != 0)
-                                        alert('{{mensaje}}');
-                                </SCript>
-
-                                <div class="card-body">
-                                    
-                                    
-                                    
-                                    <div class="row">
-                                        <label for="estiloZapatilla" class="col-2 col-form-label">Estilo</label>
-                                        <input type="text" class="col form-control form-control-user" name="estiloZapatillaAL" id="exampleInputEmail" value="{{zapatillaAL}}" placeholder="Escriba aquí el estilo de zapatilla a consultar" required>
-                                    </div>&nbsp;
-                                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Consultar Zapatilla">
-                                </div>
-                        </div>
-
-                        <div class="col-lg-6">
-
-                            <div class="card shadow mb-4">
-
-                                <img style="width: 100%; position: center;" src="{% static 'img/Consultas.jpg'%}" />
-
-                                <div class="card-body">
-
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
                     <div class="container">
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Tallas Zapatilla</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Lista Zapatillas</h6>
                             </div>
-                            <form action="{% url 'ConsultarZapatillaAL' %}" method="POST" class="user"></form>
+                            <form action="{% url 'VerInventarioAL' %}" method="POST" class="user"></form>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                                <th>Estilo</th>
                                                 <th>43</th>
                                                 <th>42</th>
                                                 <th>41</th>
@@ -296,23 +267,29 @@
                                                 <th>35 </th>
                                                 <th>34 </th>
                                                 <th>33 </th>
+
+
                                             </tr>
                                         </thead>
                                     
                                         <tbody>
+                                        {% for inventario in inventario%}
                                             <tr>
-                                                <td>{{t43_}}</td>
-                                                <td>{{t42_}}</td>
-                                                <td>{{t41_}}</td>
-                                                <td>{{t40_}}</td>
-                                                <td>{{t39_}}</td>
-                                                <td>{{t38_}}</td>
-                                                <td>{{t37_}}</td>
-                                                <td>{{t36_}}</td>
-                                                <td>{{t35_}}</td>
-                                                <td>{{t34_}}</td>
-                                                <td>{{t33_}}</td>
+                                                <td>{{inventario.estilo}}</td>
+                                                <td>{{inventario.talla_43}}</td>
+                                                <td>{{inventario.talla_42}}</td>
+                                                <td>{{inventario.talla_41}}</td>
+                                                <td>{{inventario.talla_40}}</td>
+                                                <td>{{inventario.talla_39}}</td>
+                                                <td>{{inventario.talla_38}}</td>
+                                                <td>{{inventario.talla_37}}</td>
+                                                <td>{{inventario.talla_36}}</td>
+                                                <td>{{inventario.talla_35}}</td>
+                                                <td>{{inventario.talla_34}}</td>
+                                                <td>{{inventario.talla_33}}</td>
                                             </tr>
+                                        {% endfor %}
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -322,7 +299,7 @@
 
                 </div>
                 <!-- /.container-fluid -->
-
+        </div>
             </div>
             <!-- End of Main Content -->
 
@@ -352,7 +329,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Desea salir?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Desea salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
